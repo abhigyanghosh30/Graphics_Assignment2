@@ -20,6 +20,16 @@ main.h
 main.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
 
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ground.cpp
+ground.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ground.h
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ground.h
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/input.cpp
 iostream
 -
@@ -49,6 +59,8 @@ timer.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/timer.h
 ball.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ball.h
+ground.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ground.h
 
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
 iostream

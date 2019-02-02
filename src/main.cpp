@@ -1,6 +1,8 @@
 #include "main.h"
 #include "timer.h"
 #include "ball.h"
+#include "ground.h"
+
 
 using namespace std;
 
@@ -12,7 +14,8 @@ GLFWwindow *window;
 * Customizable functions *
 **************************/
 
-Ball ball1;
+Ball plane;
+Ground ground;
 
 float screen_zoom = 1, screen_center_x = 0, screen_center_y = 0;
 float camera_rotation_angle = 0;
@@ -30,7 +33,7 @@ void draw() {
     glUseProgram (programID);
 
     // Eye - Location of camera. Don't change unless you are sure!!
-    glm::vec3 eye ( 5*cos(camera_rotation_angle*M_PI/180.0f), 0, 5*sin(camera_rotation_angle*M_PI/180.0f) );
+    glm::vec3 eye (0, 2, -2);
     // Target - Where is the camera looking at.  Don't change unless you are sure!!
     glm::vec3 target (0, 0, 0);
     // Up - Up vector defines tilt of camera.  Don't change unless you are sure!!
@@ -51,19 +54,23 @@ void draw() {
     glm::mat4 MVP;  // MVP = Projection * View * Model
 
     // Scene render
-    ball1.draw(VP);
+    plane.draw(VP);
+    ground.draw(VP);
 }
 
 void tick_input(GLFWwindow *window) {
     int left  = glfwGetKey(window, GLFW_KEY_LEFT);
     int right = glfwGetKey(window, GLFW_KEY_RIGHT);
     if (left) {
-        // Do something
+        plane.position.x-=0.1;
+    }
+    if(right){
+        plane.position.x+=0.1;
     }
 }
 
 void tick_elements() {
-    ball1.tick();
+    plane.tick();
     camera_rotation_angle += 1;
 }
 
@@ -73,8 +80,8 @@ void initGL(GLFWwindow *window, int width, int height) {
     /* Objects should be created before any other gl function and shaders */
     // Create the models
 
-    ball1       = Ball(0, 0, COLOR_RED);
-
+    plane       = Ball(0, 0, 0);
+    ground = Ground(0,-10.0f,0);
     // Create and compile our GLSL program from the shaders
     programID = LoadShaders("Sample_GL.vert", "Sample_GL.frag");
     // Get a handle for our "MVP" uniform
@@ -117,7 +124,7 @@ int main(int argc, char **argv) {
             // Swap Frame Buffer in double buffering
             glfwSwapBuffers(window);
 
-            tick_elements();
+            // tick_elements();
             tick_input(window);
         }
 
@@ -138,5 +145,5 @@ void reset_screen() {
     float bottom = screen_center_y - 4 / screen_zoom;
     float left   = screen_center_x - 4 / screen_zoom;
     float right  = screen_center_x + 4 / screen_zoom;
-    Matrices.projection = glm::ortho(left, right, bottom, top, 0.1f, 500.0f);
+    Matrices.projection = glm::perspective(float(M_PI_2), 1.0f, 0.1f, 500.0f);
 }
