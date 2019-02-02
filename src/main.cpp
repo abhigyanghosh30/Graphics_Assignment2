@@ -19,6 +19,7 @@ Ground ground;
 
 float screen_zoom = 1, screen_center_x = 0, screen_center_y = 0;
 float camera_rotation_angle = 0;
+float eye_x, eye_y, eye_z, t=0;
 
 Timer t60(1.0 / 60);
 
@@ -33,9 +34,12 @@ void draw() {
     glUseProgram (programID);
 
     // Eye - Location of camera. Don't change unless you are sure!!
-    glm::vec3 eye (0, 2, -2);
+    eye_x = plane.position.x+3.0f*cos(t*M_PI/180.0f);
+    eye_y = plane.position.y+2.0f;
+    eye_z = plane.position.z+3.0f*sin(t*M_PI/180.0f);
+    glm::vec3 eye (eye_x, eye_y, eye_z);
     // Target - Where is the camera looking at.  Don't change unless you are sure!!
-    glm::vec3 target (0, 0, 0);
+    glm::vec3 target (plane.position.x, plane.position.y, plane.position.z);
     // Up - Up vector defines tilt of camera.  Don't change unless you are sure!!
     glm::vec3 up (0, 1, 0);
 
@@ -61,11 +65,19 @@ void draw() {
 void tick_input(GLFWwindow *window) {
     int left  = glfwGetKey(window, GLFW_KEY_LEFT);
     int right = glfwGetKey(window, GLFW_KEY_RIGHT);
+    int up = glfwGetKey(window, GLFW_KEY_UP);
+    int down = glfwGetKey(window, GLFW_KEY_DOWN);
     if (left) {
         plane.position.x-=0.1;
     }
     if(right){
         plane.position.x+=0.1;
+    }
+    if(up) {
+        t+=1.0f;
+    }
+    if(down) {
+        t-=1.0f;
     }
 }
 
@@ -80,7 +92,7 @@ void initGL(GLFWwindow *window, int width, int height) {
     /* Objects should be created before any other gl function and shaders */
     // Create the models
 
-    plane       = Ball(0, 0, 0);
+    plane = Ball(0, 0, 0);
     ground = Ground(0,-10.0f,0);
     // Create and compile our GLSL program from the shaders
     programID = LoadShaders("Sample_GL.vert", "Sample_GL.frag");
