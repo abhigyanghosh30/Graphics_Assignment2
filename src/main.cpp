@@ -16,9 +16,6 @@ Ball ball1;
 
 float screen_zoom = 1, screen_center_x = 0, screen_center_y = 0;
 float camera_rotation_angle = 0;
-float t;
-
-int camera_view = 0;
 
 Timer t60(1.0 / 60);
 
@@ -31,23 +28,11 @@ void draw() {
     // use the loaded shader program
     // Don't change unless you know what you are doing
     glUseProgram (programID);
-    float ex,ey,ez,tx,ty,tz;
-    if(camera_view == 1){
-        ex=0;
-        ey=ez=0;
-        tx=ty=tz=0;
-    }
-    if(camera_view==0){
-        ex=10*cos(t*M_PI/180.0f);        
-        ey=10;
-        ez=10*sin(t*M_PI/180.0f);
-        tx=ty=tz=0;
-    }
+
     // Eye - Location of camera. Don't change unless you are sure!!
-    glm::vec3 eye(ex,ey,ez);
-    
+    glm::vec3 eye ( 5*cos(camera_rotation_angle*M_PI/180.0f), 0, 5*sin(camera_rotation_angle*M_PI/180.0f) );
     // Target - Where is the camera looking at.  Don't change unless you are sure!!
-    glm::vec3 target (tx,ty,tz);
+    glm::vec3 target (0, 0, 0);
     // Up - Up vector defines tilt of camera.  Don't change unless you are sure!!
     glm::vec3 up (0, 1, 0);
 
@@ -72,13 +57,8 @@ void draw() {
 void tick_input(GLFWwindow *window) {
     int left  = glfwGetKey(window, GLFW_KEY_LEFT);
     int right = glfwGetKey(window, GLFW_KEY_RIGHT);
-    int up = glfwGetKey(window, GLFW_KEY_UP);
-    int down = glfwGetKey(window, GLFW_KEY_DOWN);
     if (left) {
-        camera_view=(camera_view+1)%2;
-    }
-    if(up){
-        t+=10;
+        // Do something
     }
 }
 
@@ -137,7 +117,7 @@ int main(int argc, char **argv) {
             // Swap Frame Buffer in double buffering
             glfwSwapBuffers(window);
 
-            // tick_elements();
+            tick_elements();
             tick_input(window);
         }
 

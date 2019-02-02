@@ -6,21 +6,21 @@
 
 #IncludeRegexTransform: 
 
-/home/masterg/Documents/4th Semester/Graphics/graphics-boilerplate/src/ball.cpp
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ball.cpp
 ball.h
-/home/masterg/Documents/4th Semester/Graphics/graphics-boilerplate/src/ball.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ball.h
 main.h
-/home/masterg/Documents/4th Semester/Graphics/graphics-boilerplate/src/main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
 
-/home/masterg/Documents/4th Semester/Graphics/graphics-boilerplate/src/ball.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ball.h
 main.h
-/home/masterg/Documents/4th Semester/Graphics/graphics-boilerplate/src/main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
 
-/home/masterg/Documents/4th Semester/Graphics/graphics-boilerplate/src/color.cpp
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/color.cpp
 main.h
-/home/masterg/Documents/4th Semester/Graphics/graphics-boilerplate/src/main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
 
-/home/masterg/Documents/4th Semester/Graphics/graphics-boilerplate/src/input.cpp
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/input.cpp
 iostream
 -
 cmath
@@ -40,17 +40,17 @@ glm/gtx/transform.hpp
 glm/gtc/matrix_transform.hpp
 -
 main.h
-/home/masterg/Documents/4th Semester/Graphics/graphics-boilerplate/src/main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
 
-/home/masterg/Documents/4th Semester/Graphics/graphics-boilerplate/src/main.cpp
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.cpp
 main.h
-/home/masterg/Documents/4th Semester/Graphics/graphics-boilerplate/src/main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
 timer.h
-/home/masterg/Documents/4th Semester/Graphics/graphics-boilerplate/src/timer.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/timer.h
 ball.h
-/home/masterg/Documents/4th Semester/Graphics/graphics-boilerplate/src/ball.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ball.h
 
-/home/masterg/Documents/4th Semester/Graphics/graphics-boilerplate/src/main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
 iostream
 -
 cmath
@@ -70,29 +70,7 @@ glm/gtx/transform.hpp
 glm/gtc/matrix_transform.hpp
 -
 
-/home/masterg/Documents/4th Semester/Graphics/graphics-boilerplate/src/nonedit.cpp
-iostream
--
-cmath
--
-fstream
--
-vector
--
-GL/glew.h
--
-GLFW/glfw3.h
--
-glm/glm.hpp
--
-glm/gtx/transform.hpp
--
-glm/gtc/matrix_transform.hpp
--
-main.h
-/home/masterg/Documents/4th Semester/Graphics/graphics-boilerplate/src/main.h
-
-/home/masterg/Documents/4th Semester/Graphics/graphics-boilerplate/src/other_handlers.cpp
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/nonedit.cpp
 iostream
 -
 cmath
@@ -112,15 +90,37 @@ glm/gtx/transform.hpp
 glm/gtc/matrix_transform.hpp
 -
 main.h
-/home/masterg/Documents/4th Semester/Graphics/graphics-boilerplate/src/main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
 
-/home/masterg/Documents/4th Semester/Graphics/graphics-boilerplate/src/timer.cpp
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/other_handlers.cpp
+iostream
+-
+cmath
+-
+fstream
+-
+vector
+-
+GL/glew.h
+-
+GLFW/glfw3.h
+-
+glm/glm.hpp
+-
+glm/gtx/transform.hpp
+-
+glm/gtc/matrix_transform.hpp
+-
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/timer.cpp
 timer.h
-/home/masterg/Documents/4th Semester/Graphics/graphics-boilerplate/src/timer.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/timer.h
 GLFW/glfw3.h
 -
 
-/home/masterg/Documents/4th Semester/Graphics/graphics-boilerplate/src/timer.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/timer.h
 
 /usr/local/include/GLFW/glfw3.h
 stddef.h
