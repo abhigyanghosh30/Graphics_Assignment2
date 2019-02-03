@@ -9,6 +9,7 @@ public:
     Ball() {}
     Ball(float x, float y, float z);
     glm::vec3 position;
+    glm::vec3 speed;
     void draw(glm::mat4 VP);
     void set_position(float x, float y, float z);
     void tick();

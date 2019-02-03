@@ -83,22 +83,24 @@ void tick_input(GLFWwindow *window) {
         t-=1.0f;
     }
     if(a) {
-        plane.yaw += 1;
+        plane.yaw = plane.yaw <= -30 ? -30 : plane.yaw - 1;
+        plane.position.x += 1.0f;
     }
     if(d) {
-        plane.yaw -= 1;
+        plane.yaw = plane.yaw >= 30 ? 30 : plane.yaw + 1;
+        plane.position.x -= 1.0f;
     }
     if(space) {
-        plane.roll = -30;
+        plane.roll = plane.roll <= -30 ? -30 : plane.roll - 0.2f;
     }
     else {
-        plane.roll = 0;
+        plane.roll = plane.roll >= 0 ? 0 : plane.roll+0.2f;
     }
 }
 
 void tick_elements() {
     plane.tick();
-    camera_rotation_angle += 1;
+
 }
 
 /* Initialize the OpenGL rendering properties */
@@ -151,7 +153,7 @@ int main(int argc, char **argv) {
             // Swap Frame Buffer in double buffering
             glfwSwapBuffers(window);
 
-            // tick_elements();
+            tick_elements();
             tick_input(window);
         }
 
