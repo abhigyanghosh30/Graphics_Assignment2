@@ -3,7 +3,7 @@
 
 Ball::Ball(float x, float y, float z) {
     this->position = glm::vec3(x, y, z);
-    this->yaw = this->pitch = this->roll = 1.0f;
+    this->yaw = this->pitch = this->roll = 180.0f;
     static GLfloat vertex_buffer_data[3200];
     for(int i=0;i<100;i++){
         vertex_buffer_data[18*i] = 0.5*(cos(2*M_PI*i/100));;
@@ -38,12 +38,21 @@ Ball::Ball(float x, float y, float z) {
 		vertex_buffer_data[1800+9*i+8] = 1.0f;
     }
     static GLfloat vertex_buffer_tail[]={
+        //Tail
         0.0f,0.5f,0.5f,
         0.0f,0.5f,0.0f,
         0.0f,1.0f,0.0f,
+        //Wing right
+        0.5f,0.0f,0.0f,
+        1.5f,0.0f,0.0f,
+        0.5f,0.0f,0.5f,
+        //Wing left
+        -0.5f,0.0f,0.0f,
+        -1.5f,0.0f,0.0f,
+        -0.5f,0.0f,0.5f,
     };
     this->object = create3DObject(GL_TRIANGLES, 300*3, vertex_buffer_data, COLOR_RED, GL_FILL);
-    this->tail = create3DObject(GL_TRIANGLES, 1*3,vertex_buffer_tail,COLOR_BLACK, GL_FILL);
+    this->tail = create3DObject(GL_TRIANGLES, 3*3,vertex_buffer_tail,COLOR_BLACK, GL_FILL);
 }
 
 void Ball::draw(glm::mat4 VP) {
@@ -53,7 +62,9 @@ void Ball::draw(glm::mat4 VP) {
     glm::mat4 rotate_pitch = glm::rotate((float) (this->pitch * M_PI / 180.0f), glm::vec3(0, 1, 0));
     glm::mat4 rotate_yaw   = glm::rotate((float) (this->yaw * M_PI / 180.0f), glm::vec3(0, 0, 1));
     // No need as coords centered at 0, 0, 0 of cube arouund which we waant to rotate
-    // rotate_roll          = rotate * glm::translate(glm::vec3(0, -0.6, 0));
+    // rotate_roll          = rotate_roll * glm::translate(glm::vec3(this->position.x, this->position.y, this->position.z));
+    // rotate_pitch          = rotate_pitch * glm::translate(glm::vec3(this->position.x, this->position.y, this->position.z));
+    // rotate_yaw          = rotate_yaw * glm::translate(glm::vec3(this->position.x, this->position.y, this->position.z));
     Matrices.model *= (translate * yaw * pitch *  roll );
     glm::mat4 MVP = VP * Matrices.model;
     glUniformMatrix4fv(Matrices.MatrixID, 1, GL_FALSE, &MVP[0][0]);

@@ -81,7 +81,7 @@ void tick_input(GLFWwindow *window) {
         t-=1.0f;
     }
     if(a) {
-        plane.yaw += 1;
+        plane.yaw += 10;
     }
 }
 
