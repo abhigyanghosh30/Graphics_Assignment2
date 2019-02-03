@@ -19,7 +19,7 @@ Ground ground;
 
 float screen_zoom = 1, screen_center_x = 0, screen_center_y = 0;
 float camera_rotation_angle = 0;
-float eye_x, eye_y, eye_z, t=0;
+float eye_x, eye_y, eye_z, t=90;
 
 Timer t60(1.0 / 60);
 
@@ -35,8 +35,8 @@ void draw() {
 
     // Eye - Location of camera. Don't change unless you are sure!!
     eye_x = plane.position.x+3.0f*cos(t*M_PI/180.0f);
-    eye_y = plane.position.y+2.0f;
-    eye_z = plane.position.z+3.0f*sin(t*M_PI/180.0f);
+    eye_y = plane.position.y+3.0f;
+    eye_z = plane.position.z-3.0f*sin(t*M_PI/180.0f);
     glm::vec3 eye (eye_x, eye_y, eye_z);
     // Target - Where is the camera looking at.  Don't change unless you are sure!!
     glm::vec3 target (plane.position.x, plane.position.y, plane.position.z);
@@ -67,6 +67,7 @@ void tick_input(GLFWwindow *window) {
     int right = glfwGetKey(window, GLFW_KEY_RIGHT);
     int up = glfwGetKey(window, GLFW_KEY_UP);
     int down = glfwGetKey(window, GLFW_KEY_DOWN);
+    int a = glfwGetKey(window, GLFW_KEY_A);
     if (left) {
         plane.position.x-=0.1;
     }
@@ -78,6 +79,9 @@ void tick_input(GLFWwindow *window) {
     }
     if(down) {
         t-=1.0f;
+    }
+    if(a) {
+        plane.yaw += 1;
     }
 }
 
