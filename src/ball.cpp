@@ -3,7 +3,7 @@
 
 Ball::Ball(float x, float y, float z) {
     this->position = glm::vec3(x, y, z);
-    this->yaw = this->pitch = this->roll = 180.0f;
+    this->yaw = this->pitch = this->roll = 0.0f;
     static GLfloat vertex_buffer_data[3200];
     for(int i=0;i<100;i++){
         vertex_buffer_data[18*i] = 0.5*(cos(2*M_PI*i/100));;
@@ -65,7 +65,7 @@ void Ball::draw(glm::mat4 VP) {
     // rotate_roll          = rotate_roll * glm::translate(glm::vec3(this->position.x, this->position.y, this->position.z));
     // rotate_pitch          = rotate_pitch * glm::translate(glm::vec3(this->position.x, this->position.y, this->position.z));
     // rotate_yaw          = rotate_yaw * glm::translate(glm::vec3(this->position.x, this->position.y, this->position.z));
-    Matrices.model *= (translate * yaw * pitch *  roll );
+    Matrices.model *= (translate * rotate_yaw * rotate_pitch *  rotate_roll );
     glm::mat4 MVP = VP * Matrices.model;
     glUniformMatrix4fv(Matrices.MatrixID, 1, GL_FALSE, &MVP[0][0]);
     draw3DObject(this->object);
