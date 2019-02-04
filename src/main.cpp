@@ -69,12 +69,14 @@ void tick_input(GLFWwindow *window) {
     int down = glfwGetKey(window, GLFW_KEY_DOWN);
     int a = glfwGetKey(window, GLFW_KEY_A);
     int d = glfwGetKey(window, GLFW_KEY_D);
+    int w = glfwGetKey(window, GLFW_KEY_W);
     int space = glfwGetKey(window, GLFW_KEY_SPACE);
-    if (left) {
-        plane.position.x-=0.1;
+    if (right) {
+        plane.pitch -= 1;
     }
-    if(right){
-        plane.position.x+=0.1;
+    if(left){
+        plane.pitch += 1;
+        
     }
     if(up) {
         t+=1.0f;
@@ -92,9 +94,17 @@ void tick_input(GLFWwindow *window) {
     }
     if(space) {
         plane.roll = plane.roll <= -30 ? -30 : plane.roll - 0.2f;
+        plane.position.y += 0.1f;
     }
-    else {
-        plane.roll = plane.roll >= 0 ? 0 : plane.roll+0.2f;
+    else
+    {
+        plane.roll = plane.roll >= 0 ? 0 : plane.roll + 0.2f;
+        plane.position.y -= 0.01f;
+    }
+    
+    if(w) {
+        plane.position.x += sin(plane.pitch*M_PI / 180.0f);
+        plane.position.z += cos(plane.pitch*M_PI / 180.0f);
     }
 }
 
