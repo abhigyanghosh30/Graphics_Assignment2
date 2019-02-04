@@ -144,8 +144,8 @@ void initGL(GLFWwindow *window, int width, int height) {
     speed1 = SSD(0,0);
     speed2 = SSD(2,0);
     alt = SSD(-1,0);
-    for(int i=0;i<10;i++) {
-        volcanoes.push_back(Volcano(rand()%1000,rand()%500));
+    for(int i=0;i<50;i++) {
+        volcanoes.push_back(Volcano(rand()%1000-500,rand()%500-250));
     }
     // Create and compile our GLSL program from the shaders
     programID = LoadShaders("Sample_GL.vert", "Sample_GL.frag");

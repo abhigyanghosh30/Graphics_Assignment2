@@ -12,6 +12,7 @@ public:
 
 private:
     VAO *object;
+    VAO *lava;
 };
 
 #endif // VOLCANO_H
