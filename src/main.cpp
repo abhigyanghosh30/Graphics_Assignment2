@@ -16,7 +16,9 @@ GLFWwindow *window;
 
 Ball plane;
 Ground ground;
-SSD speed;
+SSD speed1;
+SSD speed2;
+SSD alt;
 
 float screen_zoom = 1, screen_center_x = 0, screen_center_y = 0;
 float camera_rotation_angle = 0;
@@ -61,7 +63,9 @@ void draw() {
     // Scene render
     plane.draw(VP);
     ground.draw(VP);
-    speed.draw(VP);
+    speed1.draw(VP);
+    speed2.draw(VP);
+    alt.draw(VP);
 }
 
 void tick_input(GLFWwindow *window) {
@@ -102,15 +106,25 @@ void tick_input(GLFWwindow *window) {
     }
     
     if(w) {
-        plane.speed.x = sin(plane.pitch*M_PI / 180.0f);
-        plane.speed.z = cos(plane.pitch*M_PI / 180.0f);
+        plane.speed.x = 0.5 * sin(plane.pitch*M_PI / 180.0f);
+        plane.speed.z = 0.5 * cos(plane.pitch*M_PI / 180.0f);
     }
+    // else{
+    //     plane.speed = glm::vec3(0,0,0);
+    // }
 }
 
 void tick_elements() {
     plane.tick();
-    speed.set_position(plane.position.x-5,plane.position.y,plane.position.z);
-    speed.set_score(sqrt(plane.speed.x*plane.speed.x + plane.speed.y*plane.speed.y + plane.speed.z*plane.speed.z)*100);
+    plane.speed.x = 0.5 * sin(plane.pitch*M_PI / 180.0f);
+    plane.speed.z = 0.5 * cos(plane.pitch*M_PI / 180.0f);
+    speed1.set_position(plane.position.x+2,plane.position.y+2,plane.position.z+3);
+    speed2.set_position(plane.position.x,plane.position.y+2,plane.position.z+3);
+    alt.set_position(plane.position.x-3,plane.position.y+2, plane.position.z+3);
+    int mag_speed = int(100 * sqrt(plane.speed.x*plane.speed.x + plane.speed.y*plane.speed.y + plane.speed.z*plane.speed.z));
+    speed1.set_score(mag_speed%10);
+    speed2.set_score((mag_speed/10)%10);
+    alt.set_score(int(plane.position.y)%10);
 }
 
 /* Initialize the OpenGL rendering properties */
@@ -121,7 +135,9 @@ void initGL(GLFWwindow *window, int width, int height) {
 
     plane = Ball(0, 0, 0);
     ground = Ground(0,-10.0f,0);
-    speed = SSD(0,0);
+    speed1 = SSD(0,0);
+    speed2 = SSD(2,0);
+    alt = SSD(-1,0);
     // Create and compile our GLSL program from the shaders
     programID = LoadShaders("Sample_GL.vert", "Sample_GL.frag");
     // Get a handle for our "MVP" uniform
@@ -167,7 +183,9 @@ int main(int argc, char **argv) {
             tick_elements();
             tick_input(window);
         }
-
+        if(plane.position.y == -9){
+            quit(window);
+        }
         // Poll for Keyboard and mouse events
         glfwPollEvents();
     }
