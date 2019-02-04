@@ -61,6 +61,8 @@ ball.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ball.h
 ground.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ground.h
+ssd.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ssd.h
 
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
 iostream
@@ -123,6 +125,16 @@ glm/gtx/transform.hpp
 -
 glm/gtc/matrix_transform.hpp
 -
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ssd.cpp
+ssd.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ssd.h
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ssd.h
 main.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
 

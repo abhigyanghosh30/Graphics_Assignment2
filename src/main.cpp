@@ -2,7 +2,7 @@
 #include "timer.h"
 #include "ball.h"
 #include "ground.h"
-
+#include "ssd.h"
 
 using namespace std;
 
@@ -16,6 +16,7 @@ GLFWwindow *window;
 
 Ball plane;
 Ground ground;
+SSD speed;
 
 float screen_zoom = 1, screen_center_x = 0, screen_center_y = 0;
 float camera_rotation_angle = 0;
@@ -60,6 +61,7 @@ void draw() {
     // Scene render
     plane.draw(VP);
     ground.draw(VP);
+    speed.draw(VP);
 }
 
 void tick_input(GLFWwindow *window) {
@@ -86,11 +88,9 @@ void tick_input(GLFWwindow *window) {
     }
     if(a) {
         plane.yaw = plane.yaw <= -30 ? -30 : plane.yaw - 1;
-        plane.position.x += 1.0f;
     }
     if(d) {
         plane.yaw = plane.yaw >= 30 ? 30 : plane.yaw + 1;
-        plane.position.x -= 1.0f;
     }
     if(space) {
         plane.roll = plane.roll <= -30 ? -30 : plane.roll - 0.2f;
@@ -103,8 +103,8 @@ void tick_input(GLFWwindow *window) {
     }
     
     if(w) {
-        plane.position.x += sin(plane.pitch*M_PI / 180.0f);
-        plane.position.z += cos(plane.pitch*M_PI / 180.0f);
+        plane.position.x += 0.1 * sin(plane.pitch*M_PI / 180.0f);
+        plane.position.z += 0.1 * cos(plane.pitch*M_PI / 180.0f);
     }
 }
 
@@ -121,6 +121,7 @@ void initGL(GLFWwindow *window, int width, int height) {
 
     plane = Ball(0, 0, 0);
     ground = Ground(0,-10.0f,0);
+    speed = SSD(0,plane.speed.x);
     // Create and compile our GLSL program from the shaders
     programID = LoadShaders("Sample_GL.vert", "Sample_GL.frag");
     // Get a handle for our "MVP" uniform
