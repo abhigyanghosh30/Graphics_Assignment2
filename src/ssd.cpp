@@ -2,7 +2,7 @@
 #include "main.h"
 
 SSD::SSD(float place,int num){
-    this->position = glm::vec3(place, -10,0);
+    this->position = glm::vec3(place, 10 ,0);
     this->value=num;
     static GLfloat vertex_buffer_data_1[] = {
         -1.0f,1.0f,0.0f,//A
@@ -157,4 +157,8 @@ void SSD::draw(glm::mat4 VP) {
 }
 void SSD::set_score(int value) {
     this->value=value;
+}
+
+void SSD::set_position(float x, float y, float z) {
+    this->position = glm::vec3(x,y,z);
 }

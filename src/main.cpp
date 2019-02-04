@@ -35,9 +35,9 @@ void draw() {
     glUseProgram (programID);
 
     // Eye - Location of camera. Don't change unless you are sure!!
-    eye_x = plane.position.x+3.0f*cos(t*M_PI/180.0f);
-    eye_y = plane.position.y+3.0f;
-    eye_z = plane.position.z-3.0f*sin(t*M_PI/180.0f);
+    eye_x = plane.position.x + 3.0f * cos( t * M_PI / 180.0f);
+    eye_y = plane.position.y + 3.0f;
+    eye_z = plane.position.z - 3.0f * sin(t * M_PI / 180.0f);
     glm::vec3 eye (eye_x, eye_y, eye_z);
     // Target - Where is the camera looking at.  Don't change unless you are sure!!
     glm::vec3 target (plane.position.x, plane.position.y, plane.position.z);
@@ -99,18 +99,18 @@ void tick_input(GLFWwindow *window) {
     else
     {
         plane.roll = plane.roll >= 0 ? 0 : plane.roll + 0.2f;
-        plane.position.y -= 0.01f;
     }
     
     if(w) {
-        plane.position.x += 0.1 * sin(plane.pitch*M_PI / 180.0f);
-        plane.position.z += 0.1 * cos(plane.pitch*M_PI / 180.0f);
+        plane.speed.x = sin(plane.pitch*M_PI / 180.0f);
+        plane.speed.z = cos(plane.pitch*M_PI / 180.0f);
     }
 }
 
 void tick_elements() {
     plane.tick();
-
+    speed.set_position(plane.position.x-5,plane.position.y,plane.position.z);
+    speed.set_score(sqrt(plane.speed.x*plane.speed.x + plane.speed.y*plane.speed.y + plane.speed.z*plane.speed.z)*100);
 }
 
 /* Initialize the OpenGL rendering properties */
@@ -121,7 +121,7 @@ void initGL(GLFWwindow *window, int width, int height) {
 
     plane = Ball(0, 0, 0);
     ground = Ground(0,-10.0f,0);
-    speed = SSD(0,plane.speed.x);
+    speed = SSD(0,0);
     // Create and compile our GLSL program from the shaders
     programID = LoadShaders("Sample_GL.vert", "Sample_GL.frag");
     // Get a handle for our "MVP" uniform
