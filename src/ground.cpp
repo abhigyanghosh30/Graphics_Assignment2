@@ -4,11 +4,11 @@
 Ground::Ground(float x, float y, float z) {
     this->position = glm::vec3(x, y, z);
     static const GLfloat vertex_buffer_data[] = {
-        0.0f,0.0f,-100.0f,
-        -100.0f,0.0f,100.0f,
-        100.0f, 0.0f, 100.0f,
+        0.0f,0.0f,-1000.0f,
+        -1000.0f,0.0f,1000.0f,
+        1000.0f, 0.0f, 1000.0f,
     };
-    this->object = create3DObject(GL_TRIANGLES, 6, vertex_buffer_data, COLOR_GREEN, GL_FILL);
+    this->object = create3DObject(GL_TRIANGLES, 6, vertex_buffer_data, COLOR_DEEPSEABLUE, GL_FILL);
 }
 
 void Ground::draw(glm::mat4 VP) {

@@ -13,6 +13,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/other_handlers.cpp" "/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles/graphics_asgn2.dir/src/other_handlers.cpp.o"
   "/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ssd.cpp" "/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles/graphics_asgn2.dir/src/ssd.cpp.o"
   "/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/timer.cpp" "/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles/graphics_asgn2.dir/src/timer.cpp.o"
+  "/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/volcano.cpp" "/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles/graphics_asgn2.dir/src/volcano.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

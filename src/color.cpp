@@ -5,3 +5,4 @@ const color_t COLOR_GREEN = { 135, 211, 124 };
 const color_t COLOR_BLACK = { 52, 73, 94 };
 const color_t COLOR_BACKGROUND = { 135, 206, 250 };
 const color_t COLOR_BLUE = { 77, 77, 255 };
+const color_t COLOR_DEEPSEABLUE = { 0, 105, 148 };

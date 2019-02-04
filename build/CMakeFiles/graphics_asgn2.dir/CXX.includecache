@@ -63,6 +63,8 @@ ground.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ground.h
 ssd.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ssd.h
+volcano.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/volcano.h
 
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
 iostream
@@ -145,6 +147,16 @@ GLFW/glfw3.h
 -
 
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/timer.h
+
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/volcano.cpp
+volcano.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/volcano.h
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/volcano.h
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
 
 /usr/local/include/GLFW/glfw3.h
 stddef.h

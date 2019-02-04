@@ -3,6 +3,7 @@
 #include "ball.h"
 #include "ground.h"
 #include "ssd.h"
+#include "volcano.h"
 
 using namespace std;
 
@@ -19,6 +20,8 @@ Ground ground;
 SSD speed1;
 SSD speed2;
 SSD alt;
+vector <Volcano> volcanoes;
+
 
 float screen_zoom = 1, screen_center_x = 0, screen_center_y = 0;
 float camera_rotation_angle = 0;
@@ -66,6 +69,9 @@ void draw() {
     speed1.draw(VP);
     speed2.draw(VP);
     alt.draw(VP);
+    for(vector<Volcano>::iterator volcano = volcanoes.begin();volcano!=volcanoes.end();volcano++) {
+        volcano->draw(VP);
+    }
 }
 
 void tick_input(GLFWwindow *window) {
@@ -138,6 +144,9 @@ void initGL(GLFWwindow *window, int width, int height) {
     speed1 = SSD(0,0);
     speed2 = SSD(2,0);
     alt = SSD(-1,0);
+    for(int i=0;i<10;i++) {
+        volcanoes.push_back(Volcano(rand()%1000,rand()%500));
+    }
     // Create and compile our GLSL program from the shaders
     programID = LoadShaders("Sample_GL.vert", "Sample_GL.frag");
     // Get a handle for our "MVP" uniform
