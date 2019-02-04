@@ -21,7 +21,7 @@ SSD speed1;
 SSD speed2;
 SSD alt;
 vector <Volcano> volcanoes;
-
+int lives;
 
 float screen_zoom = 1, screen_center_x = 0, screen_center_y = 0;
 float camera_rotation_angle = 0;
@@ -66,12 +66,16 @@ void draw() {
     // Scene render
     plane.draw(VP);
     ground.draw(VP);
-    speed1.draw(VP);
-    speed2.draw(VP);
-    alt.draw(VP);
     for(vector<Volcano>::iterator volcano = volcanoes.begin();volcano!=volcanoes.end();volcano++) {
         volcano->draw(VP);
     }
+
+    // Matrices.view = glm::lookAt( glm::vec3(0,0,-3), glm::vec3(0,0,0),glm::vec3(0,1,0) );
+    // Matrices.projection = glm::ortho(-1,1,-1,1);
+    // glm::mat4 VP2 = Matrices.projection * Matrices.view;    
+    speed1.draw(VP);
+    speed2.draw(VP);
+    alt.draw(VP);
 }
 
 void tick_input(GLFWwindow *window) {
@@ -190,6 +194,7 @@ int main(int argc, char **argv) {
             glfwSwapBuffers(window);
 
             tick_elements();
+            check_collisions();
             tick_input(window);
         }
         if(plane.position.y == -9){
@@ -213,4 +218,13 @@ void reset_screen() {
     float left   = screen_center_x - 4 / screen_zoom;
     float right  = screen_center_x + 4 / screen_zoom;
     Matrices.projection = glm::perspective(float(M_PI_2), 1.0f, 0.1f, 500.0f);
+}
+
+void check_collisions() { 
+    for(vector<Volcano>::iterator volcano = volcanoes.begin();volcano!=volcanoes.end();volcano++) {
+        if(plane.position.y < 10  && sqrt((plane.position.x - volcano->position.x)*(plane.position.x - volcano->position.x)+(plane.position.z - volcano->position.z)*(plane.position.z - volcano->position.z))<8){
+            cout<<"Quit "<<lives++<<endl;
+            // quit(window);
+        }
+    }
 }
