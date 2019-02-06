@@ -4,6 +4,7 @@
 #include "ground.h"
 #include "ssd.h"
 #include "volcano.h"
+#include "bar.h"
 
 using namespace std;
 
@@ -17,15 +18,15 @@ GLFWwindow *window;
 
 Ball plane;
 Ground ground;
-SSD speed1;
-SSD speed2;
-SSD alt;
+// SSD speed1;
+// SSD speed2;
+Bar alt;
 vector <Volcano> volcanoes;
 int lives;
 
 float screen_zoom = 1, screen_center_x = 0, screen_center_y = 0;
 float camera_rotation_angle = 0;
-float eye_x, eye_y, eye_z, t=90;
+float eye_x, eye_y, eye_z, t = 90;
 
 Timer t60(1.0 / 60);
 
@@ -73,8 +74,8 @@ void draw() {
     // Matrices.view = glm::lookAt( glm::vec3(0,0,-3), glm::vec3(0,0,0),glm::vec3(0,1,0) );
     // Matrices.projection = glm::ortho(-1,1,-1,1);
     // glm::mat4 VP2 = Matrices.projection * Matrices.view;    
-    speed1.draw(VP);
-    speed2.draw(VP);
+    // speed1.draw(VP);
+    // speed2.draw(VP);
     alt.draw(VP);
 }
 
@@ -89,10 +90,11 @@ void tick_input(GLFWwindow *window) {
     int space = glfwGetKey(window, GLFW_KEY_SPACE);
     if (right) {
         plane.pitch -= 1;
+        t = plane.pitch + 90;
     }
     if(left){
         plane.pitch += 1;
-        
+        t = plane.pitch + 90;
     }
     if(up) {
         t+=1.0f;
@@ -128,13 +130,14 @@ void tick_elements() {
     plane.tick();
     plane.speed.x = 0.5 * sin(plane.pitch*M_PI / 180.0f);
     plane.speed.z = 0.5 * cos(plane.pitch*M_PI / 180.0f);
-    speed1.set_position(plane.position.x+2,plane.position.y+2,plane.position.z+3);
-    speed2.set_position(plane.position.x,plane.position.y+2,plane.position.z+3);
-    alt.set_position(plane.position.x-3,plane.position.y+2, plane.position.z+3);
+    // speed1.set_position(plane.position.x+2,plane.position.y+2,plane.position.z+3);
+    // speed2.set_position(plane.position.x,plane.position.y+2,plane.position.z+3);
+    alt.set_position(plane.position.x,plane.position.y-4, plane.position.z);
+    alt.pitch = plane.pitch;
     int mag_speed = int(100 * sqrt(plane.speed.x*plane.speed.x + plane.speed.y*plane.speed.y + plane.speed.z*plane.speed.z));
-    speed1.set_score(mag_speed%10);
-    speed2.set_score((mag_speed/10)%10);
-    alt.set_score(int(plane.position.y)%10);
+    // speed1.set_score(mag_speed%10);
+    // speed2.set_score((mag_speed/10)%10);
+    alt.set_score(plane.position.y);
 }
 
 /* Initialize the OpenGL rendering properties */
@@ -145,9 +148,9 @@ void initGL(GLFWwindow *window, int width, int height) {
 
     plane = Ball(0, 0, 0);
     ground = Ground(0,-10.0f,0);
-    speed1 = SSD(0,0);
-    speed2 = SSD(2,0);
-    alt = SSD(-1,0);
+    // speed1 = SSD(0,0);
+    // speed2 = SSD(2,0);
+    alt = Bar(-3,2,3,10,COLOR_LAVAYELLOW);
     for(int i=0;i<50;i++) {
         volcanoes.push_back(Volcano(rand()%1000-500,rand()%500-250));
     }
