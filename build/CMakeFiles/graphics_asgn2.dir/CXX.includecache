@@ -26,6 +26,16 @@ main.h
 main.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
 
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/bomb.cpp
+bomb.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/bomb.h
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/bomb.h
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/color.cpp
 main.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
@@ -77,6 +87,8 @@ volcano.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/volcano.h
 bar.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/bar.h
+bomb.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/bomb.h
 
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
 iostream

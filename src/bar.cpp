@@ -37,7 +37,7 @@ void Bar::set_score(float score){
         score/10,-0.2f,0.0f,
         -1.0f,-0.2f,0.0f,
     };
-    std::cout<<score<<std::endl;
+    // std::cout<<score<<std::endl;
     this->object = create3DObject(GL_TRIANGLES,2*3,vertex_buffer_data,this->colour,GL_FILL);
 }
 

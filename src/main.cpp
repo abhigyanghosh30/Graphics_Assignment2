@@ -5,6 +5,7 @@
 #include "ssd.h"
 #include "volcano.h"
 #include "bar.h"
+#include "bomb.h"
 
 using namespace std;
 
@@ -22,6 +23,7 @@ Ground ground;
 // SSD speed2;
 Bar alt;
 vector <Volcano> volcanoes;
+vector <Bomb> bombs;
 int lives;
 
 float screen_zoom = 1, screen_center_x = 0, screen_center_y = 0;
@@ -49,7 +51,7 @@ void draw() {
     glm::vec3 target (plane.position.x, plane.position.y, plane.position.z);
     // Up - Up vector defines tilt of camera.  Don't change unless you are sure!!
     glm::vec3 up (0, 1, 0);
-
+ 
     // Compute Camera matrix (view)
     Matrices.view = glm::lookAt( eye, target, up ); // Rotating Camera for 3D
     // Don't change unless you are sure!!
@@ -70,7 +72,9 @@ void draw() {
     for(vector<Volcano>::iterator volcano = volcanoes.begin();volcano!=volcanoes.end();volcano++) {
         volcano->draw(VP);
     }
-
+    for(vector<Bomb>::iterator bomb = bombs.begin(); bomb != bombs.end();bomb++) {
+        bomb->draw(VP);
+    }
     // Matrices.view = glm::lookAt( glm::vec3(0,0,-3), glm::vec3(0,0,0),glm::vec3(0,1,0) );
     // Matrices.projection = glm::ortho(-1,1,-1,1);
     // glm::mat4 VP2 = Matrices.projection * Matrices.view;    
@@ -88,6 +92,7 @@ void tick_input(GLFWwindow *window) {
     int d = glfwGetKey(window, GLFW_KEY_D);
     int w = glfwGetKey(window, GLFW_KEY_W);
     int space = glfwGetKey(window, GLFW_KEY_SPACE);
+    int shift = glfwGetKey(window, GLFW_KEY_LEFT_SHIFT);
     if (right) {
         plane.pitch -= 1;
         t = plane.pitch + 90;
@@ -121,9 +126,10 @@ void tick_input(GLFWwindow *window) {
         plane.speed.x = 0.5 * sin(plane.pitch*M_PI / 180.0f);
         plane.speed.z = 0.5 * cos(plane.pitch*M_PI / 180.0f);
     }
-    // else{
-    //     plane.speed = glm::vec3(0,0,0);
-    // }
+    if(shift) {
+        bombs.push_back(Bomb(plane.position.x,plane.position.y,plane.position.z)); 
+        cout<<"Bomb dropped"<<endl;
+    }
 }
 
 void tick_elements() {
@@ -138,6 +144,9 @@ void tick_elements() {
     // speed1.set_score(mag_speed%10);
     // speed2.set_score((mag_speed/10)%10);
     alt.set_score(plane.position.y);
+    for(vector<Bomb>::iterator bomb=bombs.begin();bomb!=bombs.end();bomb++) {
+        bomb->tick();
+    }
 }
 
 /* Initialize the OpenGL rendering properties */
