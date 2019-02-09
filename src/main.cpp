@@ -26,9 +26,11 @@ vector <Volcano> volcanoes;
 vector <Bomb> bombs;
 int lives;
 
-float screen_zoom = 1, screen_center_x = 0, screen_center_y = 0;
+float screen_zoom = 0.1f, screen_center_x = 0, screen_center_y = 0;
 float camera_rotation_angle = 0;
 float eye_x, eye_y, eye_z, t = 90;
+float up_x = 0, up_y = 1, up_z = 0;
+int camera_view = 0;
 
 Timer t60(1.0 / 60);
 
@@ -43,14 +45,29 @@ void draw() {
     glUseProgram (programID);
 
     // Eye - Location of camera. Don't change unless you are sure!!
-    eye_x = plane.position.x + 3.0f * cos( t * M_PI / 180.0f);
-    eye_y = plane.position.y + 3.0f;
-    eye_z = plane.position.z - 3.0f * sin(t * M_PI / 180.0f);
+    if(camera_view == 0)
+    {   
+        eye_x = plane.position.x + 3.0f * cos( t * M_PI / 180.0f);
+        eye_y = plane.position.y + 3.0f;
+        eye_z = plane.position.z - 3.0f * sin(t * M_PI / 180.0f);
+        up_x = 0;
+        up_y = 1;
+        up_z = 0;
+    }
+    if(camera_view == 1)
+    {
+        eye_x = plane.position.x;
+        eye_y = plane.position.y+20;
+        eye_z = plane.position.z;
+        up_x = 0;
+        up_y = 0;
+        up_z = 1;
+    }
     glm::vec3 eye (eye_x, eye_y, eye_z);
     // Target - Where is the camera looking at.  Don't change unless you are sure!!
     glm::vec3 target (plane.position.x, plane.position.y, plane.position.z);
     // Up - Up vector defines tilt of camera.  Don't change unless you are sure!!
-    glm::vec3 up (0, 1, 0);
+    glm::vec3 up (up_x, up_y, up_z);
  
     // Compute Camera matrix (view)
     Matrices.view = glm::lookAt( eye, target, up ); // Rotating Camera for 3D
@@ -89,6 +106,7 @@ void tick_input(GLFWwindow *window) {
     int up = glfwGetKey(window, GLFW_KEY_UP);
     int down = glfwGetKey(window, GLFW_KEY_DOWN);
     int a = glfwGetKey(window, GLFW_KEY_A);
+    int c = glfwGetKey(window, GLFW_KEY_C);
     int d = glfwGetKey(window, GLFW_KEY_D);
     int w = glfwGetKey(window, GLFW_KEY_W);
     int space = glfwGetKey(window, GLFW_KEY_SPACE);
@@ -129,6 +147,9 @@ void tick_input(GLFWwindow *window) {
     if(shift) {
         bombs.push_back(Bomb(plane.position.x,plane.position.y,plane.position.z)); 
         cout<<"Bomb dropped"<<endl;
+    }
+    if(c) {
+        camera_view = (camera_view+1)%2;
     }
 }
 
@@ -229,7 +250,11 @@ void reset_screen() {
     float bottom = screen_center_y - 4 / screen_zoom;
     float left   = screen_center_x - 4 / screen_zoom;
     float right  = screen_center_x + 4 / screen_zoom;
+    // if(camera_view == 0)
     Matrices.projection = glm::perspective(float(M_PI_2), 1.0f, 0.1f, 500.0f);
+    // if(camera_view == 1)
+    //     Matrices.projection = glm::ortho(left,right,bottom,top,0.1f,100.0f);
+
 }
 
 void check_collisions() { 
