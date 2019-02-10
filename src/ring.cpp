@@ -4,30 +4,25 @@
 Ring::Ring(float x, float y, float z) {
     this->position = glm::vec3(x, y, z);
     static GLfloat vertex_buffer_data[1800];
-    for(int i=0;i<=100;i++) {
-        vertex_buffer_data[18*i] = 10 * cos(2*M_PI*i/100);
-        vertex_buffer_data[18*i+1] = 0.0f;
-        vertex_buffer_data[18*i+2] = 10 * sin(2*M_PI*i/100);
-        
-        vertex_buffer_data[18*i+3] = 10 * cos(2*M_PI*(i+1)/100);
-        vertex_buffer_data[18*i+4] = 0.0f;
-        vertex_buffer_data[18*i+5] = 10 * sin(2*M_PI*(i+1)/100);
-        
-        vertex_buffer_data[18*i+6] = 5 * cos(2*M_PI*i/100);
-        vertex_buffer_data[18*i+7] = 10.0f;
-        vertex_buffer_data[18*i+8] = 5 * sin(2*M_PI*i/100);
-        
-        vertex_buffer_data[18*i+9] = 5 * cos(2*M_PI*i/100);
-        vertex_buffer_data[18*i+10] = 10.0f;
-        vertex_buffer_data[18*i+11] = 5 * sin(2*M_PI*i/100);
-        
-        vertex_buffer_data[18*i+12] = 5 * cos(2*M_PI*(i+1)/100);
-        vertex_buffer_data[18*i+13] = 10.0f;
-        vertex_buffer_data[18*i+14] = 5 * sin(2*M_PI*(i+1)/100);
-        
-        vertex_buffer_data[18*i+15] = 10 * cos(2*M_PI*(i+1)/100);
-        vertex_buffer_data[18*i+16] = 0.0f;
-        vertex_buffer_data[18*i+17] = 10 * sin(2*M_PI*(i+1)/100);
+    for(int i=0;i<100;i++){
+        vertex_buffer_data[18*i] = 10.0f*(cos(M_PI*i/100));
+        vertex_buffer_data[18*i+1] = 10.0f*(sin(M_PI*i/100));
+        vertex_buffer_data[18*i+2] = 0.0f;
+        vertex_buffer_data[18*i+3] = 9.0f*(cos(M_PI*i/100));
+        vertex_buffer_data[18*i+4] = 9.0f*(sin(M_PI*i/100));
+        vertex_buffer_data[18*i+5] = 0.0f;
+        vertex_buffer_data[18*i+6] = 10.0f*(cos(M_PI*(i+1)/100));
+        vertex_buffer_data[18*i+7] = 10.0f*(sin(M_PI*(i+1)/100));
+        vertex_buffer_data[18*i+8] = 0.0f;
+        vertex_buffer_data[18*i+9] = 9.0f*(cos(M_PI*i/100));
+        vertex_buffer_data[18*i+10] = 9.0f*(sin(M_PI*i/100));
+        vertex_buffer_data[18*i+11] = 0.0f;
+        vertex_buffer_data[18*i+12] = 9.0f*(cos(M_PI*(i+1)/100));
+        vertex_buffer_data[18*i+13] = 9.0f*(sin(M_PI*(i+1)/100));
+        vertex_buffer_data[18*i+14] = 0.0f;
+        vertex_buffer_data[18*i+15] = 10.0f*(cos(M_PI*(i+1)/100));
+        vertex_buffer_data[18*i+16] = 10.0f*(sin(M_PI*(i+1)/100));
+        vertex_buffer_data[18*i+17] = 0.0f;
     }
     this->object = create3DObject(GL_TRIANGLES, 200*3, vertex_buffer_data, COLOR_GREEN,GL_FILL);
 }

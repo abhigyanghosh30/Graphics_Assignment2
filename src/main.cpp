@@ -81,6 +81,7 @@ void draw() {
     // Don't change unless you are sure!!
     glm::mat4 VP = Matrices.projection * Matrices.view;
 
+    glm::mat4 VP1 = Matrices.projection *  glm::lookAt(glm::vec3(0, 0, 3), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
     // Send our transformation to the currently bound shader, in the "MVP" uniform
     // For each model you render, since the MVP will be different (at least the M part)
     // Don't change unless you are sure!!
@@ -104,7 +105,7 @@ void draw() {
     // glm::mat4 VP2 = Matrices.projection * Matrices.view;    
     // speed1.draw(VP);
     // speed2.draw(VP);
-    alt.draw(VP);
+    alt.draw(VP1);
 }
 
 void tick_input(GLFWwindow *window) {
@@ -166,8 +167,8 @@ void tick_elements() {
     plane.speed.z = 0.5 * cos(plane.yaw*M_PI / 180.0f);
     // speed1.set_position(plane.position.x+2,plane.position.y+2,plane.position.z+3);
     // speed2.set_position(plane.position.x,plane.position.y+2,plane.position.z+3);
-    alt.set_position(plane.position.x,plane.position.y-4, plane.position.z);
-    alt.yaw = plane.yaw;
+    // alt.set_position(plane.position.x,plane.position.y-4, plane.position.z);
+    // alt.yaw = plane.yaw;
     int mag_speed = int(100 * sqrt(plane.speed.x*plane.speed.x + plane.speed.y*plane.speed.y + plane.speed.z*plane.speed.z));
     // speed1.set_score(mag_speed%10);
     // speed2.set_score((mag_speed/10)%10);
@@ -187,7 +188,7 @@ void initGL(GLFWwindow *window, int width, int height) {
     ground = Ground(0,-10.0f,0);
     // speed1 = SSD(0,0);
     // speed2 = SSD(2,0);
-    alt = Bar(-3,2,3,10,COLOR_LAVAYELLOW);
+    alt = Bar(-3,-3,0,10,COLOR_LAVAYELLOW);
     for(int i=0;i<50;i++) {
         volcanoes.push_back(Volcano(rand()%1000-500,rand()%500-250));
     }
