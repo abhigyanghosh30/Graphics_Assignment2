@@ -6,6 +6,8 @@
 #include "volcano.h"
 #include "bar.h"
 #include "bomb.h"
+#include "ring.h"
+
 
 using namespace std;
 
@@ -24,6 +26,7 @@ Ground ground;
 Bar alt;
 vector <Volcano> volcanoes;
 vector <Bomb> bombs;
+vector <Ring> rings;
 int lives;
 
 float screen_zoom = 0.1f, screen_center_x = 0, screen_center_y = 0;
@@ -92,6 +95,10 @@ void draw() {
     for(vector<Bomb>::iterator bomb = bombs.begin(); bomb != bombs.end();bomb++) {
         bomb->draw(VP);
     }
+    for(vector<Ring>::iterator ring = rings.begin(); ring != rings.end();ring++) {
+        ring->draw(VP);
+    }
+
     // Matrices.view = glm::lookAt( glm::vec3(0,0,-3), glm::vec3(0,0,0),glm::vec3(0,1,0) );
     // Matrices.projection = glm::ortho(-1,1,-1,1);
     // glm::mat4 VP2 = Matrices.projection * Matrices.view;    
@@ -112,12 +119,12 @@ void tick_input(GLFWwindow *window) {
     int space = glfwGetKey(window, GLFW_KEY_SPACE);
     int shift = glfwGetKey(window, GLFW_KEY_LEFT_SHIFT);
     if (right) {
-        plane.pitch -= 1;
-        t = plane.pitch + 90;
+        plane.yaw -= 1;
+        t = plane.yaw + 90;
     }
     if(left){
-        plane.pitch += 1;
-        t = plane.pitch + 90;
+        plane.yaw += 1;
+        t = plane.yaw + 90;
     }
     if(up) {
         t+=1.0f;
@@ -126,23 +133,23 @@ void tick_input(GLFWwindow *window) {
         t-=1.0f;
     }
     if(a) {
-        plane.yaw = plane.yaw <= -30 ? -30 : plane.yaw - 1;
+        plane.roll = plane.roll <= -30 ? -30 : plane.roll - 1;
     }
     if(d) {
-        plane.yaw = plane.yaw >= 30 ? 30 : plane.yaw + 1;
+        plane.roll = plane.roll >= 30 ? 30 : plane.roll + 1;
     }
     if(space) {
-        plane.roll = plane.roll <= -30 ? -30 : plane.roll - 0.2f;
+        plane.pitch = plane.pitch <= -30 ? -30 : plane.pitch - 0.2f;
         plane.position.y += 0.1f;
     }
     else
     {
-        plane.roll = plane.roll >= 0 ? 0 : plane.roll + 0.2f;
+        plane.pitch = plane.pitch >= 0 ? 0 : plane.pitch + 0.2f;
     }
     
     if(w) {
-        plane.speed.x = 0.5 * sin(plane.pitch*M_PI / 180.0f);
-        plane.speed.z = 0.5 * cos(plane.pitch*M_PI / 180.0f);
+        plane.speed.x = 0.5 * sin(plane.yaw*M_PI / 180.0f);
+        plane.speed.z = 0.5 * cos(plane.yaw*M_PI / 180.0f);
     }
     if(shift) {
         bombs.push_back(Bomb(plane.position.x,plane.position.y,plane.position.z)); 
@@ -155,12 +162,12 @@ void tick_input(GLFWwindow *window) {
 
 void tick_elements() {
     plane.tick();
-    plane.speed.x = 0.5 * sin(plane.pitch*M_PI / 180.0f);
-    plane.speed.z = 0.5 * cos(plane.pitch*M_PI / 180.0f);
+    plane.speed.x = 0.5 * sin(plane.yaw*M_PI / 180.0f);
+    plane.speed.z = 0.5 * cos(plane.yaw*M_PI / 180.0f);
     // speed1.set_position(plane.position.x+2,plane.position.y+2,plane.position.z+3);
     // speed2.set_position(plane.position.x,plane.position.y+2,plane.position.z+3);
     alt.set_position(plane.position.x,plane.position.y-4, plane.position.z);
-    alt.pitch = plane.pitch;
+    alt.yaw = plane.yaw;
     int mag_speed = int(100 * sqrt(plane.speed.x*plane.speed.x + plane.speed.y*plane.speed.y + plane.speed.z*plane.speed.z));
     // speed1.set_score(mag_speed%10);
     // speed2.set_score((mag_speed/10)%10);
@@ -183,6 +190,9 @@ void initGL(GLFWwindow *window, int width, int height) {
     alt = Bar(-3,2,3,10,COLOR_LAVAYELLOW);
     for(int i=0;i<50;i++) {
         volcanoes.push_back(Volcano(rand()%1000-500,rand()%500-250));
+    }
+    for(int i=0;i<30;i++) {
+        rings.push_back(Ring(rand()%1000-50,rand()%20,rand()%500-250));
     }
     // Create and compile our GLSL program from the shaders
     programID = LoadShaders("Sample_GL.vert", "Sample_GL.frag");

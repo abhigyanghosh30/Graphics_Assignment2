@@ -11,7 +11,7 @@ public:
     void draw(glm::mat4 VP);
     void set_score(float score);
     void set_position(float x, float y, float z);
-    float pitch;
+    float yaw;
     color_t colour;
 private:
     VAO *object;

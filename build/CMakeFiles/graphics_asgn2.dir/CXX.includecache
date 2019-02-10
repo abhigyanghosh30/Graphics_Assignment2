@@ -89,6 +89,8 @@ bar.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/bar.h
 bomb.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/bomb.h
+ring.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ring.h
 
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
 iostream
@@ -151,6 +153,16 @@ glm/gtx/transform.hpp
 -
 glm/gtc/matrix_transform.hpp
 -
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ring.cpp
+ring.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ring.h
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ring.h
 main.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
 

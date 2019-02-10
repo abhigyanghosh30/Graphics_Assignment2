@@ -59,14 +59,14 @@ Ball::Ball(float x, float y, float z) {
 void Ball::draw(glm::mat4 VP) {
     Matrices.model = glm::mat4(1.0f);
     glm::mat4 translate = glm::translate (this->position);    // glTranslatef
-    glm::mat4 rotate_roll  = glm::rotate((float) (this->roll * M_PI / 180.0f), glm::vec3(1, 0, 0));
-    glm::mat4 rotate_pitch = glm::rotate((float) (this->pitch * M_PI / 180.0f), glm::vec3(0, 1, 0));
-    glm::mat4 rotate_yaw   = glm::rotate((float) (this->yaw * M_PI / 180.0f), glm::vec3(0, 0, 1));
+    glm::mat4 rotate_roll  = glm::rotate((float) (this->roll * M_PI / 180.0f), glm::vec3(0, 0, 1));
+    glm::mat4 rotate_pitch = glm::rotate((float) (this->pitch * M_PI / 180.0f), glm::vec3(1, 0, 0));
+    glm::mat4 rotate_yaw   = glm::rotate((float) (this->yaw * M_PI / 180.0f), glm::vec3(0, 1, 0));
     // No need as coords centered at 0, 0, 0 of cube arouund which we waant to rotate
     // rotate_roll          = rotate_roll * glm::translate(glm::vec3(this->position.x, this->position.y, this->position.z));
     // rotate_pitch          = rotate_pitch * glm::translate(glm::vec3(this->position.x, this->position.y, this->position.z));
     // rotate_yaw          = rotate_yaw * glm::translate(glm::vec3(this->position.x, this->position.y, this->position.z));
-    Matrices.model *= (translate * rotate_yaw * rotate_pitch *  rotate_roll );
+    Matrices.model *= ( translate * rotate_yaw * rotate_pitch *  rotate_roll );
     glm::mat4 MVP = VP * Matrices.model;
     glUniformMatrix4fv(Matrices.MatrixID, 1, GL_FALSE, &MVP[0][0]);
     draw3DObject(this->object);
