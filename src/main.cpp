@@ -24,6 +24,7 @@ Ground ground;
 // SSD speed1;
 // SSD speed2;
 Bar alt;
+Bar lives_bar;
 vector <Volcano> volcanoes;
 vector <Bomb> bombs;
 vector <Ring> rings;
@@ -106,6 +107,7 @@ void draw() {
     // speed1.draw(VP);
     // speed2.draw(VP);
     alt.draw(VP1);
+    lives_bar.draw(VP1);
 }
 
 void tick_input(GLFWwindow *window) {
@@ -117,13 +119,14 @@ void tick_input(GLFWwindow *window) {
     int c = glfwGetKey(window, GLFW_KEY_C);
     int d = glfwGetKey(window, GLFW_KEY_D);
     int w = glfwGetKey(window, GLFW_KEY_W);
+    int s = glfwGetKey(window, GLFW_KEY_S);
     int space = glfwGetKey(window, GLFW_KEY_SPACE);
     int shift = glfwGetKey(window, GLFW_KEY_LEFT_SHIFT);
-    if (right) {
+    if (d) {
         plane.yaw -= 1;
         t = plane.yaw + 90;
     }
-    if(left){
+    if(a){
         plane.yaw += 1;
         t = plane.yaw + 90;
     }
@@ -133,25 +136,30 @@ void tick_input(GLFWwindow *window) {
     if(down) {
         t-=1.0f;
     }
-    if(a) {
+    if(left || a) {
         plane.roll = plane.roll <= -30 ? -30 : plane.roll - 1;
     }
-    if(d) {
+    if(right || d ) {
         plane.roll = plane.roll >= 30 ? 30 : plane.roll + 1;
     }
-    if(space) {
+    if(w) {
         plane.pitch = plane.pitch <= -30 ? -30 : plane.pitch - 0.2f;
         plane.position.y += 0.1f;
     }
+    else if(s) {
+        plane.pitch = plane.pitch >= 30 ? 30 : plane.pitch + 0.2f;
+        plane.position.y -= 0.1f;
+    }
     else
     {
-        plane.pitch = plane.pitch >= 0 ? 0 : plane.pitch + 0.2f;
+        plane.pitch = plane.pitch >= 0 ? plane.pitch + 0.2f : 0;
+        plane.pitch = plane.pitch <= 0 ? plane.pitch - 0.2f : 0;
     }
     
-    if(w) {
-        plane.speed.x = 0.5 * sin(plane.yaw*M_PI / 180.0f);
-        plane.speed.z = 0.5 * cos(plane.yaw*M_PI / 180.0f);
-    }
+    // if(w) {
+    //     plane.speed.x = 0.5 * sin(plane.yaw*M_PI / 180.0f);
+    //     plane.speed.z = 0.5 * cos(plane.yaw*M_PI / 180.0f);
+    // }
     if(shift) {
         bombs.push_back(Bomb(plane.position.x,plane.position.y,plane.position.z)); 
         cout<<"Bomb dropped"<<endl;
@@ -172,7 +180,8 @@ void tick_elements() {
     int mag_speed = int(100 * sqrt(plane.speed.x*plane.speed.x + plane.speed.y*plane.speed.y + plane.speed.z*plane.speed.z));
     // speed1.set_score(mag_speed%10);
     // speed2.set_score((mag_speed/10)%10);
-    alt.set_score(plane.position.y);
+    alt.set_score(plane.position.y-10);
+    lives_bar.set_score(30-lives);
     for(vector<Bomb>::iterator bomb=bombs.begin();bomb!=bombs.end();bomb++) {
         bomb->tick();
     }
@@ -189,6 +198,7 @@ void initGL(GLFWwindow *window, int width, int height) {
     // speed1 = SSD(0,0);
     // speed2 = SSD(2,0);
     alt = Bar(-3,-3,0,10,COLOR_LAVAYELLOW);
+    lives_bar = Bar(-3,-2,0,30,COLOR_BLUE);
     for(int i=0;i<50;i++) {
         volcanoes.push_back(Volcano(rand()%1000-500,rand()%500-250));
     }
@@ -273,6 +283,14 @@ void check_collisions() {
         if(plane.position.y < 10  && sqrt((plane.position.x - volcano->position.x)*(plane.position.x - volcano->position.x)+(plane.position.z - volcano->position.z)*(plane.position.z - volcano->position.z))<8){
             cout<<"Quit "<<lives++<<endl;
             // quit(window);
+        }
+    }
+    for(vector<Ring>::iterator ring = rings.begin();ring!=rings.end();ring++)
+    {
+        if(sqrt((plane.position.y - ring->position.y)*(plane.position.y - ring->position.y)+(plane.position.x - ring->position.x)*(plane.position.x - ring->position.x)+(plane.position.z - ring->position.z)*(plane.position.z - ring->position.z)) < 8) {
+            lives--;
+            rings.erase(ring);
+            ring--;
         }
     }
 }
