@@ -6,8 +6,9 @@
 #include "volcano.h"
 #include "bar.h"
 #include "bomb.h"
+#include "bullet.h"
 #include "ring.h"
-
+#include "cannon.h"
 
 using namespace std;
 
@@ -28,6 +29,8 @@ Bar lives_bar;
 vector <Volcano> volcanoes;
 vector <Bomb> bombs;
 vector <Ring> rings;
+vector <Bullet> bullets;
+vector <Cannon> cannons;
 int lives;
 
 float screen_zoom = 0.1f, screen_center_x = 0, screen_center_y = 0;
@@ -97,10 +100,16 @@ void draw() {
     for(vector<Bomb>::iterator bomb = bombs.begin(); bomb != bombs.end();bomb++) {
         bomb->draw(VP);
     }
-    for(vector<Ring>::iterator ring = rings.begin(); ring != rings.end();ring++) {
+    for(vector<Ring>::iterator ring = rings.begin(); ring != rings.end() ; ring++) {
         ring->draw(VP);
     }
-
+    for(vector<Bullet>::iterator bullet = bullets.begin(); bullet != bullets.end(); bullet++) {
+        bullet->draw(VP);
+    }
+    for(vector<Cannon>::iterator cannon = cannons.begin(); cannon != cannons.end() ;cannon++)
+    {
+        cannon->draw(VP);
+    }
     // Matrices.view = glm::lookAt( glm::vec3(0,0,-3), glm::vec3(0,0,0),glm::vec3(0,1,0) );
     // Matrices.projection = glm::ortho(-1,1,-1,1);
     // glm::mat4 VP2 = Matrices.projection * Matrices.view;    
@@ -122,6 +131,7 @@ void tick_input(GLFWwindow *window) {
     int s = glfwGetKey(window, GLFW_KEY_S);
     int space = glfwGetKey(window, GLFW_KEY_SPACE);
     int shift = glfwGetKey(window, GLFW_KEY_LEFT_SHIFT);
+    int mouse_left = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT);
     if (d) {
         plane.yaw -= 1;
         t = plane.yaw + 90;
@@ -164,6 +174,10 @@ void tick_input(GLFWwindow *window) {
         bombs.push_back(Bomb(plane.position.x,plane.position.y,plane.position.z)); 
         cout<<"Bomb dropped"<<endl;
     }
+    if(mouse_left) {
+        cout<<"Left"<<endl;
+        bullets.push_back(Bullet(plane.position.x,plane.position.y,plane.position.z,plane.yaw));
+    }
     if(c) {
         camera_view = (camera_view+1)%2;
     }
@@ -185,6 +199,9 @@ void tick_elements() {
     for(vector<Bomb>::iterator bomb=bombs.begin();bomb!=bombs.end();bomb++) {
         bomb->tick();
     }
+    for(vector<Bullet>::iterator bullet = bullets.begin(); bullet!=bullets.end(); bullet++) {
+        bullet->tick();
+    }
 }
 
 /* Initialize the OpenGL rendering properties */
@@ -204,6 +221,9 @@ void initGL(GLFWwindow *window, int width, int height) {
     }
     for(int i=0;i<30;i++) {
         rings.push_back(Ring(rand()%1000-50,rand()%20,rand()%500-250));
+    }
+    for(int i=0;i<15;i++) {
+        cannons.push_back(Cannon(rand()%1000-50,rand()%500-250));
     }
     // Create and compile our GLSL program from the shaders
     programID = LoadShaders("Sample_GL.vert", "Sample_GL.frag");

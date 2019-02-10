@@ -204,6 +204,60 @@ src/bomb.cpp.s:
 	$(MAKE) -f CMakeFiles/graphics_asgn2.dir/build.make CMakeFiles/graphics_asgn2.dir/src/bomb.cpp.s
 .PHONY : src/bomb.cpp.s
 
+src/bullet.o: src/bullet.cpp.o
+
+.PHONY : src/bullet.o
+
+# target to build an object file
+src/bullet.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn2.dir/build.make CMakeFiles/graphics_asgn2.dir/src/bullet.cpp.o
+.PHONY : src/bullet.cpp.o
+
+src/bullet.i: src/bullet.cpp.i
+
+.PHONY : src/bullet.i
+
+# target to preprocess a source file
+src/bullet.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn2.dir/build.make CMakeFiles/graphics_asgn2.dir/src/bullet.cpp.i
+.PHONY : src/bullet.cpp.i
+
+src/bullet.s: src/bullet.cpp.s
+
+.PHONY : src/bullet.s
+
+# target to generate assembly for a file
+src/bullet.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn2.dir/build.make CMakeFiles/graphics_asgn2.dir/src/bullet.cpp.s
+.PHONY : src/bullet.cpp.s
+
+src/cannon.o: src/cannon.cpp.o
+
+.PHONY : src/cannon.o
+
+# target to build an object file
+src/cannon.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn2.dir/build.make CMakeFiles/graphics_asgn2.dir/src/cannon.cpp.o
+.PHONY : src/cannon.cpp.o
+
+src/cannon.i: src/cannon.cpp.i
+
+.PHONY : src/cannon.i
+
+# target to preprocess a source file
+src/cannon.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn2.dir/build.make CMakeFiles/graphics_asgn2.dir/src/cannon.cpp.i
+.PHONY : src/cannon.cpp.i
+
+src/cannon.s: src/cannon.cpp.s
+
+.PHONY : src/cannon.s
+
+# target to generate assembly for a file
+src/cannon.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn2.dir/build.make CMakeFiles/graphics_asgn2.dir/src/cannon.cpp.s
+.PHONY : src/cannon.cpp.s
+
 src/color.o: src/color.cpp.o
 
 .PHONY : src/color.o
@@ -492,6 +546,12 @@ help:
 	@echo "... src/bomb.o"
 	@echo "... src/bomb.i"
 	@echo "... src/bomb.s"
+	@echo "... src/bullet.o"
+	@echo "... src/bullet.i"
+	@echo "... src/bullet.s"
+	@echo "... src/cannon.o"
+	@echo "... src/cannon.i"
+	@echo "... src/cannon.s"
 	@echo "... src/color.o"
 	@echo "... src/color.i"
 	@echo "... src/color.s"

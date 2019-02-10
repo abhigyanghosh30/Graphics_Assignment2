@@ -5,7 +5,7 @@
 
 class Volcano {
 public:
-    Volcano(){}
+    Volcano() {}
     Volcano(float x, float z);
     glm::vec3 position;
     void draw(glm::mat4 VP);
