@@ -9,6 +9,7 @@
 #include "bullet.h"
 #include "ring.h"
 #include "cannon.h"
+#include "arrow.h"
 
 using namespace std;
 
@@ -31,6 +32,8 @@ vector <Bomb> bombs;
 vector <Ring> rings;
 vector <Bullet> bullets;
 vector <Cannon> cannons;
+Arrow arrow;
+
 int lives;
 
 float screen_zoom = 0.1f, screen_center_x = 0, screen_center_y = 0;
@@ -110,6 +113,7 @@ void draw() {
     {
         cannon->draw(VP);
     }
+    arrow.draw(VP);
     // Matrices.view = glm::lookAt( glm::vec3(0,0,-3), glm::vec3(0,0,0),glm::vec3(0,1,0) );
     // Matrices.projection = glm::ortho(-1,1,-1,1);
     // glm::mat4 VP2 = Matrices.projection * Matrices.view;    
@@ -204,8 +208,10 @@ void tick_elements() {
     }
     for(vector<Cannon>::iterator cannon = cannons.begin();cannon!=cannons.end();cannon++){
         cannon->tick(M_PI+atan((plane.position.x-cannon->position.x)/(plane.position.z-cannon->position.z)),atan((plane.position.y+10)/((plane.position.x-cannon->position.x)*(plane.position.x-cannon->position.x)+(plane.position.z-cannon->position.z)*(plane.position.z-cannon->position.z))));
-        cout<<cannon->pitch<<endl;
     }
+    cout<<rings.begin()->position.x<<","<<rings.begin()->position.y<<","<<rings.begin()->position.z<<endl;
+    cout<<plane.position.x<<","<<plane.position.y<<","<<plane.position.z<<endl;
+    arrow.tick(M_PI-atan((rings.begin()->position.z-plane.position.z)/(rings.begin()->position.x-plane.position.x)),atan((plane.position.y-rings.begin()->position.y)/((plane.position.x-rings.begin()->position.x)*(plane.position.x-rings.begin()->position.x)+(plane.position.z-rings.begin()->position.z)*(plane.position.z-rings.begin()->position.z))),plane.position.x,plane.position.y+2,plane.position.z);
 }
 
 /* Initialize the OpenGL rendering properties */
@@ -215,6 +221,7 @@ void initGL(GLFWwindow *window, int width, int height) {
     // Create the models
 
     plane = Ball(0, 0, 0);
+    arrow = Arrow(0, 2, 0);
     ground = Ground(0,-10.0f,0);
     // speed1 = SSD(0,0);
     // speed2 = SSD(2,0);
