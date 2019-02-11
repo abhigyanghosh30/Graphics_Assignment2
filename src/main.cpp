@@ -207,11 +207,19 @@ void tick_elements() {
         bullet->tick();
     }
     for(vector<Cannon>::iterator cannon = cannons.begin();cannon!=cannons.end();cannon++){
-        cannon->tick(M_PI+atan((plane.position.x-cannon->position.x)/(plane.position.z-cannon->position.z)),atan((plane.position.y+10)/((plane.position.x-cannon->position.x)*(plane.position.x-cannon->position.x)+(plane.position.z-cannon->position.z)*(plane.position.z-cannon->position.z))));
+        cannon->tick(atan((plane.position.x-cannon->position.x)/(plane.position.z-cannon->position.z)),atan((plane.position.y+10)/((plane.position.x-cannon->position.x)*(plane.position.x-cannon->position.x)+(plane.position.z-cannon->position.z)*(plane.position.z-cannon->position.z))));
     }
-    cout<<rings.begin()->position.x<<","<<rings.begin()->position.y<<","<<rings.begin()->position.z<<endl;
+    glm::vec3 direction = rings.begin()->position - plane.position;
+    cout<<arrow.yaw<<endl;
     cout<<plane.position.x<<","<<plane.position.y<<","<<plane.position.z<<endl;
-    arrow.tick(M_PI-atan((rings.begin()->position.z-plane.position.z)/(rings.begin()->position.x-plane.position.x)),atan((plane.position.y-rings.begin()->position.y)/((plane.position.x-rings.begin()->position.x)*(plane.position.x-rings.begin()->position.x)+(plane.position.z-rings.begin()->position.z)*(plane.position.z-rings.begin()->position.z))),plane.position.x,plane.position.y+2,plane.position.z);
+    cout<<rings.begin()->position.x<<","<<rings.begin()->position.y<<","<<rings.begin()->position.z<<endl;
+    
+    if(direction.z<0){
+        arrow.tick(M_PI+atan(direction.x/direction.z),atan(direction.y/((direction.x)*(direction.x)+(direction.z)*(direction.z))),plane.position.x,plane.position.y+2, plane.position.z);
+    }
+    else{
+        arrow.tick(atan(direction.x/direction.z),atan(direction.y/((direction.x)*(direction.x)+(direction.z)*(direction.z))),plane.position.x,plane.position.y+2, plane.position.z);
+    }
 }
 
 /* Initialize the OpenGL rendering properties */
@@ -230,6 +238,7 @@ void initGL(GLFWwindow *window, int width, int height) {
     for(int i=0;i<50;i++) {
         volcanoes.push_back(Volcano(rand()%1000-500,rand()%500-250));
     }
+    rings.push_back(Ring(0,10,0));
     for(int i=0;i<30;i++) {
         rings.push_back(Ring(rand()%1000-50,rand()%20,rand()%500-250));
     }

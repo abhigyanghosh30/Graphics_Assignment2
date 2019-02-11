@@ -6,9 +6,9 @@ Arrow::Arrow(float x, float y, float z) {
     this->yaw = 0;
     this->pitch = 0;
     static GLfloat vertex_buffer_data[] = {
-        0.5f,0.0f,1.0f,
-        -0.5f,0.0f,1.0f,
-        0.0f,0.0f,-1.0f,
+        0.25f,0.0f,0.0f,
+        -0.25f,0.0f,0.0f,
+        0.0f,0.0f,1.0f,
     };
     this->object = create3DObject(GL_TRIANGLES,3,vertex_buffer_data,COLOR_RED,GL_FILL);
 }
