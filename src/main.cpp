@@ -202,6 +202,10 @@ void tick_elements() {
     for(vector<Bullet>::iterator bullet = bullets.begin(); bullet!=bullets.end(); bullet++) {
         bullet->tick();
     }
+    for(vector<Cannon>::iterator cannon = cannons.begin();cannon!=cannons.end();cannon++){
+        cannon->tick(M_PI+atan((plane.position.x-cannon->position.x)/(plane.position.z-cannon->position.z)),atan((plane.position.y+10)/((plane.position.x-cannon->position.x)*(plane.position.x-cannon->position.x)+(plane.position.z-cannon->position.z)*(plane.position.z-cannon->position.z))));
+        cout<<cannon->pitch<<endl;
+    }
 }
 
 /* Initialize the OpenGL rendering properties */

@@ -3,8 +3,8 @@
 
 Cannon::Cannon(float x, float z) {
     this->position = glm::vec3(x,-9,z);
-    this->yaw = 45;
-    this->pitch = 0;
+    this->yaw = 1.7;
+    this->pitch = 1.7;
     static GLfloat vertex_buffer_data[3200];
     for(int i=0;i<100;i++){
         vertex_buffer_data[18*i] = 0.25*(cos(2*M_PI*i/100));;
@@ -12,14 +12,14 @@ Cannon::Cannon(float x, float z) {
 		vertex_buffer_data[18*i+2] = 0.0f;
 		vertex_buffer_data[18*i+3] = 0.25*(cos(2*M_PI*i/100));
 		vertex_buffer_data[18*i+4] = 0.25*(sin(2*M_PI*i/100));
-		vertex_buffer_data[18*i+5] = 5.0f;
+		vertex_buffer_data[18*i+5] = 10.0f;
 		vertex_buffer_data[18*i+6] = 0.25*(cos(2*M_PI*(i+1)/100));
 		vertex_buffer_data[18*i+7] = 0.25*(sin(2*M_PI*(i+1)/100));
-		vertex_buffer_data[18*i+8] = 5.0f;
+		vertex_buffer_data[18*i+8] = 10.0f;
 
         vertex_buffer_data[18*i+9] = 0.25*(cos(2*M_PI*(i+1)/100));;
 		vertex_buffer_data[18*i+10] = 0.25*(sin(2*M_PI*(i+1)/100));;
-		vertex_buffer_data[18*i+11] = 5.0f;
+		vertex_buffer_data[18*i+11] = 10.0f;
 		vertex_buffer_data[18*i+12] = 0.25*(cos(2*M_PI*i/100));
 		vertex_buffer_data[18*i+13] = 0.25*(sin(2*M_PI*i/100));
 		vertex_buffer_data[18*i+14] = 0.0f;
@@ -44,8 +44,8 @@ Cannon::Cannon(float x, float z) {
 void Cannon::draw(glm::mat4 VP) {
     Matrices.model = glm::mat4(1.0f);
     glm::mat4 translate = glm::translate (this->position);    // glTranslatef
-    glm::mat4 rotate_yaw   = glm::rotate((float) (this->yaw * M_PI / 180.0f), glm::vec3(0, 1, 0));
-    glm::mat4 rotate_pitch   = glm::rotate((float) (this->pitch * M_PI / 180.0f), glm::vec3(1, 0, 0));
+    glm::mat4 rotate_yaw   = glm::rotate((float) (this->yaw), glm::vec3(0, 1, 0));
+    glm::mat4 rotate_pitch   = glm::rotate((float) (this->pitch), glm::vec3(1, 0, 0));
     // No need as coords centered at 0, 0, 0 of cube arouund which we waant to rotate
     // rotate          = rotate * glm::translate(glm::vec3(0, -0.6, 0));
     Matrices.model *= (translate *  rotate_yaw * rotate_pitch);
@@ -55,6 +55,6 @@ void Cannon::draw(glm::mat4 VP) {
 }
 
 void Cannon::tick(float yaw, float pitch){
-    this->yaw=yaw;
+    this->yaw = yaw;
     this->pitch = pitch;   
 }
