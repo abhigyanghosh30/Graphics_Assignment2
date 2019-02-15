@@ -339,6 +339,33 @@ src/ground.cpp.s:
 	$(MAKE) -f CMakeFiles/graphics_asgn2.dir/build.make CMakeFiles/graphics_asgn2.dir/src/ground.cpp.s
 .PHONY : src/ground.cpp.s
 
+src/indicator.o: src/indicator.cpp.o
+
+.PHONY : src/indicator.o
+
+# target to build an object file
+src/indicator.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn2.dir/build.make CMakeFiles/graphics_asgn2.dir/src/indicator.cpp.o
+.PHONY : src/indicator.cpp.o
+
+src/indicator.i: src/indicator.cpp.i
+
+.PHONY : src/indicator.i
+
+# target to preprocess a source file
+src/indicator.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn2.dir/build.make CMakeFiles/graphics_asgn2.dir/src/indicator.cpp.i
+.PHONY : src/indicator.cpp.i
+
+src/indicator.s: src/indicator.cpp.s
+
+.PHONY : src/indicator.s
+
+# target to generate assembly for a file
+src/indicator.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn2.dir/build.make CMakeFiles/graphics_asgn2.dir/src/indicator.cpp.s
+.PHONY : src/indicator.cpp.s
+
 src/input.o: src/input.cpp.o
 
 .PHONY : src/input.o
@@ -588,6 +615,9 @@ help:
 	@echo "... src/ground.o"
 	@echo "... src/ground.i"
 	@echo "... src/ground.s"
+	@echo "... src/indicator.o"
+	@echo "... src/indicator.i"
+	@echo "... src/indicator.s"
 	@echo "... src/input.o"
 	@echo "... src/input.i"
 	@echo "... src/input.s"

@@ -10,6 +10,7 @@
 #include "ring.h"
 #include "cannon.h"
 #include "arrow.h"
+#include "indicator.h"
 
 using namespace std;
 
@@ -32,6 +33,7 @@ vector <Bomb> bombs;
 vector <Ring> rings;
 vector <Bullet> bullets;
 vector <Cannon> cannons;
+Indicator indicator;
 Arrow arrow;
 
 int lives;
@@ -121,6 +123,7 @@ void draw() {
     // speed2.draw(VP);
     alt.draw(VP1);
     lives_bar.draw(VP1);
+    indicator.draw(VP);
 }
 
 void tick_input(GLFWwindow *window) {
@@ -228,6 +231,7 @@ void tick_elements() {
     else{
         arrow.tick(atan(direction.x/direction.z),atan(direction.y/((direction.x)*(direction.x)+(direction.z)*(direction.z))),plane.position.x,plane.position.y+2, plane.position.z);
     }
+    indicator.set_position(rings.begin()->position.x,rings.begin()->position.y + 3,rings.begin()->position.z);
 }
 
 /* Initialize the OpenGL rendering properties */
@@ -250,6 +254,9 @@ void initGL(GLFWwindow *window, int width, int height) {
     for(int i=0;i<30;i++) {
         rings.push_back(Ring(rand()%1000-50,rand()%20,rand()%500-250));
     }
+
+    indicator = Indicator(rings.begin()->position.x,rings.begin()->position.y + 3,rings.begin()->position.z);
+
     for(int i=0;i<15;i++) {
         cannons.push_back(Cannon(rand()%1000-50,rand()%500-250));
     }

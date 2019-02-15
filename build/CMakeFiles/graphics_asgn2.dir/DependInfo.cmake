@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/cannon.cpp" "/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles/graphics_asgn2.dir/src/cannon.cpp.o"
   "/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/color.cpp" "/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles/graphics_asgn2.dir/src/color.cpp.o"
   "/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ground.cpp" "/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles/graphics_asgn2.dir/src/ground.cpp.o"
+  "/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/indicator.cpp" "/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles/graphics_asgn2.dir/src/indicator.cpp.o"
   "/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/input.cpp" "/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles/graphics_asgn2.dir/src/input.cpp.o"
   "/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.cpp" "/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles/graphics_asgn2.dir/src/main.cpp.o"
   "/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/nonedit.cpp" "/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles/graphics_asgn2.dir/src/nonedit.cpp.o"
