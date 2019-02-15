@@ -7,15 +7,18 @@
 class Ball {
 public:
     Ball() {}
-    Ball(float x, float y, color_t color);
+    Ball(float x, float y, float z);
     glm::vec3 position;
-    float rotation;
+    glm::vec3 speed;
     void draw(glm::mat4 VP);
-    void set_position(float x, float y);
+    void set_position(float x, float y, float z);
     void tick();
-    double speed;
+    float yaw;
+    float pitch;
+    float roll;
 private:
     VAO *object;
+    VAO *tail;
 };
 
 #endif // BALL_H

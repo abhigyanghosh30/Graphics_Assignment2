@@ -16,7 +16,37 @@ main.h
 main.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
 
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/bar.cpp
+bar.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/bar.h
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/bar.h
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/bomb.cpp
+bomb.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/bomb.h
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/bomb.h
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/color.cpp
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ground.cpp
+ground.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ground.h
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ground.h
 main.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
 
@@ -49,6 +79,18 @@ timer.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/timer.h
 ball.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ball.h
+ground.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ground.h
+ssd.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ssd.h
+volcano.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/volcano.h
+bar.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/bar.h
+bomb.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/bomb.h
+ring.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ring.h
 
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
 iostream
@@ -114,6 +156,26 @@ glm/gtc/matrix_transform.hpp
 main.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
 
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ring.cpp
+ring.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ring.h
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ring.h
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ssd.cpp
+ssd.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ssd.h
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ssd.h
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/timer.cpp
 timer.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/timer.h
@@ -121,6 +183,16 @@ GLFW/glfw3.h
 -
 
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/timer.h
+
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/volcano.cpp
+volcano.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/volcano.h
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/volcano.h
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
 
 /usr/local/include/GLFW/glfw3.h
 stddef.h
