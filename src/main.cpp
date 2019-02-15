@@ -136,6 +136,7 @@ void tick_input(GLFWwindow *window) {
     int space = glfwGetKey(window, GLFW_KEY_SPACE);
     int shift = glfwGetKey(window, GLFW_KEY_LEFT_SHIFT);
     int mouse_left = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT);
+    int mouse_right = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT);
     if (d) {
         plane.yaw -= 1;
         t = plane.yaw + 90;
@@ -174,9 +175,8 @@ void tick_input(GLFWwindow *window) {
     //     plane.speed.x = 0.5 * sin(plane.yaw*M_PI / 180.0f);
     //     plane.speed.z = 0.5 * cos(plane.yaw*M_PI / 180.0f);
     // }
-    if(shift) {
+    if(mouse_right) {
         bombs.push_back(Bomb(plane.position.x,plane.position.y,plane.position.z)); 
-        cout<<"Bomb dropped"<<endl;
     }
     if(mouse_left) {
         cout<<"Left"<<endl;
@@ -202,17 +202,25 @@ void tick_elements() {
     lives_bar.set_score(30-lives);
     for(vector<Bomb>::iterator bomb=bombs.begin();bomb!=bombs.end();bomb++) {
         bomb->tick();
+        if(bomb->position.y<-10){
+            bombs.erase(bomb);
+            bomb--;
+        }
     }
     for(vector<Bullet>::iterator bullet = bullets.begin(); bullet!=bullets.end(); bullet++) {
         bullet->tick();
+        if(bullet->position.y<-10){
+            bullets.erase(bullet);
+            bullet--;
+        }
     }
     for(vector<Cannon>::iterator cannon = cannons.begin();cannon!=cannons.end();cannon++){
         cannon->tick(atan((plane.position.x-cannon->position.x)/(plane.position.z-cannon->position.z)),atan((plane.position.y+10)/((plane.position.x-cannon->position.x)*(plane.position.x-cannon->position.x)+(plane.position.z-cannon->position.z)*(plane.position.z-cannon->position.z))));
     }
     glm::vec3 direction = rings.begin()->position - plane.position;
-    cout<<arrow.yaw<<endl;
-    cout<<plane.position.x<<","<<plane.position.y<<","<<plane.position.z<<endl;
-    cout<<rings.begin()->position.x<<","<<rings.begin()->position.y<<","<<rings.begin()->position.z<<endl;
+    // cout<<arrow.yaw<<endl;
+    // cout<<plane.position.x<<","<<plane.position.y<<","<<plane.position.z<<endl;
+    // cout<<rings.begin()->position.x<<","<<rings.begin()->position.y<<","<<rings.begin()->position.z<<endl;
     
     if(direction.z<0){
         arrow.tick(M_PI+atan(direction.x/direction.z),atan(direction.y/((direction.x)*(direction.x)+(direction.z)*(direction.z))),plane.position.x,plane.position.y+2, plane.position.z);
@@ -331,6 +339,24 @@ void check_collisions() {
             lives--;
             rings.erase(ring);
             ring--;
+        }
+    }
+    for(vector<Cannon>::iterator cannon = cannons.begin();cannon != cannons.end();cannon++){
+        for(vector<Bomb>::iterator bomb=bombs.begin();bomb!=bombs.begin();bomb++){
+            if(glm::length(cannon->position - bomb->position)<1){
+                bombs.erase(bomb);
+                bomb--;
+                cannons.erase(cannon);
+                cannon--;
+            }
+        }
+        for(vector<Bullet>::iterator bullet = bullets.begin();bullet!=bullets.end();bullet++){
+            if(glm::length(cannon->position - bullet->position)<1){
+                bullets.erase(bullet);
+                bullet--;
+                cannons.erase(cannon);
+                cannon--;
+            }
         }
     }
 }
