@@ -383,4 +383,11 @@ void check_collisions() {
             }
         }
     }
+    for(vector<CannonBall>::iterator cannon_ball = cannon_balls.begin(); cannon_ball != cannon_balls.end(); cannon_ball++) {
+        if(glm::length(cannon_ball->position - plane.position)<1) {
+            cannon_balls.erase(cannon_ball);
+            cannon_ball--;
+            lives++;
+        }
+    }
 }
