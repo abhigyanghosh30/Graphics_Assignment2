@@ -3,6 +3,7 @@
 
 Bullet::Bullet(float x, float y, float z, float yaw) {
     this->position = glm::vec3(x, y, z);
+    this->speed = glm::vec3(0,0,0);
     this->yaw = yaw;
     static GLfloat vertex_buffer_data[3200];
     for(int i=0;i<100;i++){
@@ -53,7 +54,9 @@ void Bullet::draw(glm::mat4 VP) {
 }
 
 void Bullet::tick(){
-    this->position.y -= 0.07;
-    this->position.x += 2.0f * sin(this->yaw*M_PI / 180.0f);
-    this->position.z += 2.0f * cos(this->yaw*M_PI / 180.0f);
+    this->speed.y -= 0.05;
+    this->speed.x = 5.0f * sin(this->yaw*M_PI / 180.0f);
+    this->speed.z = 5.0f * cos(this->yaw*M_PI / 180.0f);
+
+	this->position += this->speed;
 }

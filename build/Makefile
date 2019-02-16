@@ -285,6 +285,33 @@ src/cannon.cpp.s:
 	$(MAKE) -f CMakeFiles/graphics_asgn2.dir/build.make CMakeFiles/graphics_asgn2.dir/src/cannon.cpp.s
 .PHONY : src/cannon.cpp.s
 
+src/cannon_ball.o: src/cannon_ball.cpp.o
+
+.PHONY : src/cannon_ball.o
+
+# target to build an object file
+src/cannon_ball.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn2.dir/build.make CMakeFiles/graphics_asgn2.dir/src/cannon_ball.cpp.o
+.PHONY : src/cannon_ball.cpp.o
+
+src/cannon_ball.i: src/cannon_ball.cpp.i
+
+.PHONY : src/cannon_ball.i
+
+# target to preprocess a source file
+src/cannon_ball.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn2.dir/build.make CMakeFiles/graphics_asgn2.dir/src/cannon_ball.cpp.i
+.PHONY : src/cannon_ball.cpp.i
+
+src/cannon_ball.s: src/cannon_ball.cpp.s
+
+.PHONY : src/cannon_ball.s
+
+# target to generate assembly for a file
+src/cannon_ball.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn2.dir/build.make CMakeFiles/graphics_asgn2.dir/src/cannon_ball.cpp.s
+.PHONY : src/cannon_ball.cpp.s
+
 src/color.o: src/color.cpp.o
 
 .PHONY : src/color.o
@@ -609,6 +636,9 @@ help:
 	@echo "... src/cannon.o"
 	@echo "... src/cannon.i"
 	@echo "... src/cannon.s"
+	@echo "... src/cannon_ball.o"
+	@echo "... src/cannon_ball.i"
+	@echo "... src/cannon_ball.s"
 	@echo "... src/color.o"
 	@echo "... src/color.i"
 	@echo "... src/color.s"

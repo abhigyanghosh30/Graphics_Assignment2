@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/arrow.cpp
+arrow.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/arrow.h
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/arrow.h
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ball.cpp
 ball.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ball.h
@@ -36,6 +46,36 @@ main.h
 main.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
 
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/bullet.cpp
+bullet.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/bullet.h
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/bullet.h
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/cannon.cpp
+cannon.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/cannon.h
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/cannon.h
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/cannon_ball.cpp
+cannon_ball.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/cannon_ball.h
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/cannon_ball.h
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/color.cpp
 main.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
@@ -47,6 +87,16 @@ main.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
 
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ground.h
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/indicator.cpp
+indicator.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/indicator.h
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/indicator.h
 main.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
 
@@ -89,8 +139,18 @@ bar.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/bar.h
 bomb.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/bomb.h
+bullet.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/bullet.h
 ring.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ring.h
+cannon.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/cannon.h
+cannon_ball.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/cannon_ball.h
+arrow.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/arrow.h
+indicator.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/indicator.h
 
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
 iostream

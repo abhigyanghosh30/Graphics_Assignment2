@@ -9,6 +9,7 @@
 #include "bullet.h"
 #include "ring.h"
 #include "cannon.h"
+#include "cannon_ball.h"
 #include "arrow.h"
 #include "indicator.h"
 
@@ -33,6 +34,7 @@ vector <Bomb> bombs;
 vector <Ring> rings;
 vector <Bullet> bullets;
 vector <Cannon> cannons;
+vector <CannonBall> cannon_balls;
 Indicator indicator;
 Arrow arrow;
 
@@ -115,6 +117,10 @@ void draw() {
     {
         cannon->draw(VP);
     }
+    for(vector<CannonBall>::iterator cannon_ball = cannon_balls.begin(); cannon_ball != cannon_balls.end() ;cannon_ball++)
+    {
+        cannon_ball->draw(VP);
+    }
     arrow.draw(VP);
     // Matrices.view = glm::lookAt( glm::vec3(0,0,-3), glm::vec3(0,0,0),glm::vec3(0,1,0) );
     // Matrices.projection = glm::ortho(-1,1,-1,1);
@@ -182,7 +188,7 @@ void tick_input(GLFWwindow *window) {
         bombs.push_back(Bomb(plane.position.x,plane.position.y,plane.position.z)); 
     }
     if(mouse_left) {
-        cout<<"Left"<<endl;
+        // cout<<"Left"<<endl;
         bullets.push_back(Bullet(plane.position.x,plane.position.y,plane.position.z,plane.yaw));
     }
     if(c) {
@@ -218,11 +224,22 @@ void tick_elements() {
         }
     }
     for(vector<Cannon>::iterator cannon = cannons.begin();cannon!=cannons.end();cannon++){
-        cannon->tick(atan((plane.position.x-cannon->position.x)/(plane.position.z-cannon->position.z)),atan((plane.position.y+10)/((plane.position.x-cannon->position.x)*(plane.position.x-cannon->position.x)+(plane.position.z-cannon->position.z)*(plane.position.z-cannon->position.z))));
+        glm::vec3 direction = cannon->position - plane.position; 
+        cannon->tick(direction.z<0?atan(direction.x/direction.z):M_PI+atan(direction.x/direction.z), atan((plane.position.y + 10) / ((direction.x)*(direction.x)+(direction.z)*(direction.z))));
+        if(glm::length(direction)<50){
+            cannon_balls.push_back(CannonBall(cannon->position.x, cannon->position.z, cannon->yaw));
+        }
+    }
+    for(vector<CannonBall>::iterator cannon_ball = cannon_balls.begin(); cannon_ball!=cannon_balls.end(); cannon_ball++) {
+        cannon_ball->tick();
+        if(cannon_ball->position.y<-10){
+            cannon_balls.erase(cannon_ball);
+            cannon_ball--;
+        }
     }
     glm::vec3 direction = rings.begin()->position - plane.position;
     // cout<<arrow.yaw<<endl;
-    // cout<<plane.position.x<<","<<plane.position.y<<","<<plane.position.z<<endl;
+    cout<<plane.position.x<<","<<plane.position.y<<","<<plane.position.z<<endl;
     // cout<<rings.begin()->position.x<<","<<rings.begin()->position.y<<","<<rings.begin()->position.z<<endl;
     
     if(direction.z<0){
