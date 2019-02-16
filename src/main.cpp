@@ -10,6 +10,7 @@
 #include "ring.h"
 #include "cannon.h"
 #include "cannon_ball.h"
+#include "parachute.h"
 #include "arrow.h"
 #include "indicator.h"
 
@@ -35,6 +36,7 @@ vector <Ring> rings;
 vector <Bullet> bullets;
 vector <Cannon> cannons;
 vector <CannonBall> cannon_balls;
+vector <Parachute> parachutes;
 Indicator indicator;
 Arrow arrow;
 
@@ -120,6 +122,9 @@ void draw() {
     for(vector<CannonBall>::iterator cannon_ball = cannon_balls.begin(); cannon_ball != cannon_balls.end() ;cannon_ball++)
     {
         cannon_ball->draw(VP);
+    }
+    for(vector<Parachute>::iterator parachute = parachutes.begin(); parachute != parachutes.end(); parachute++) {
+        parachute->draw(VP);
     }
     arrow.draw(VP);
     // Matrices.view = glm::lookAt( glm::vec3(0,0,-3), glm::vec3(0,0,0),glm::vec3(0,1,0) );
@@ -207,7 +212,7 @@ void tick_elements() {
     int mag_speed = int(100 * sqrt(plane.speed.x*plane.speed.x + plane.speed.y*plane.speed.y + plane.speed.z*plane.speed.z));
     // speed1.set_score(mag_speed%10);
     // speed2.set_score((mag_speed/10)%10);
-    alt.set_score(plane.position.y-10);
+    alt.set_score(plane.position.y+10);
     lives_bar.set_score(30-lives);
     for(vector<Bomb>::iterator bomb=bombs.begin();bomb!=bombs.end();bomb++) {
         bomb->tick();
@@ -237,6 +242,14 @@ void tick_elements() {
             cannon_ball--;
         }
     }
+    for(vector<Parachute>::iterator parachute=parachutes.begin();parachute!=parachutes.end();parachute++){
+        parachute->tick();
+        if(parachute->position.y<-10){
+            parachutes.erase(parachute);
+            parachute--;
+        }
+    }
+
     glm::vec3 direction = rings.begin()->position - plane.position;
     // cout<<arrow.yaw<<endl;
     cout<<plane.position.x<<","<<plane.position.y<<","<<plane.position.z<<endl;
@@ -269,13 +282,13 @@ void initGL(GLFWwindow *window, int width, int height) {
     }
     rings.push_back(Ring(0,10,0));
     for(int i=0;i<30;i++) {
-        rings.push_back(Ring(rand()%1000-50,rand()%20,rand()%500-250));
+        rings.push_back(Ring(rand()%1000-500,rand()%20,rand()%500-250));
     }
 
     indicator = Indicator(rings.begin()->position.x,rings.begin()->position.y + 3,rings.begin()->position.z);
 
     for(int i=0;i<15;i++) {
-        cannons.push_back(Cannon(rand()%1000-50,rand()%500-250));
+        cannons.push_back(Cannon(rand()%1000-500,rand()%500-250));
     }
     // Create and compile our GLSL program from the shaders
     programID = LoadShaders("Sample_GL.vert", "Sample_GL.frag");
@@ -321,6 +334,7 @@ int main(int argc, char **argv) {
 
             tick_elements();
             check_collisions();
+            spawn_elements();
             tick_input(window);
         }
         if(plane.position.y == -9){
@@ -383,11 +397,35 @@ void check_collisions() {
             }
         }
     }
+
+
+    for(vector<Parachute>::iterator parachute=parachutes.begin(); parachute != parachutes.end(); parachute++) {
+        for(vector<Bullet>::iterator bullet = bullets.begin();bullet!=bullets.end();bullet++) {
+            if(glm::length(bullet->position-parachute->position)<2) {
+                bullets.erase(bullet);
+                bullet--;
+                parachutes.erase(parachute);
+                parachute--;
+                lives--;
+            }
+        }
+        if(glm::length(parachute->position-plane.position)<2){
+            parachutes.erase(parachute);
+            parachute--;
+            lives++;
+        }
+    }
     for(vector<CannonBall>::iterator cannon_ball = cannon_balls.begin(); cannon_ball != cannon_balls.end(); cannon_ball++) {
         if(glm::length(cannon_ball->position - plane.position)<1) {
             cannon_balls.erase(cannon_ball);
             cannon_ball--;
             lives++;
         }
+    }
+}
+
+void spawn_elements(){
+    if(rand()%10000 > 9000) {
+        parachutes.push_back(Parachute(rand()%1000-500,rand()%500-250));
     }
 }

@@ -147,6 +147,8 @@ cannon.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/cannon.h
 cannon_ball.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/cannon_ball.h
+parachute.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/parachute.h
 arrow.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/arrow.h
 indicator.h
@@ -213,6 +215,16 @@ glm/gtx/transform.hpp
 -
 glm/gtc/matrix_transform.hpp
 -
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/parachute.cpp
+parachute.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/parachute.h
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/parachute.h
 main.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
 
