@@ -7,6 +7,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/graphics_asgn2.dir/src/cannon.cpp.o"
   "CMakeFiles/graphics_asgn2.dir/src/cannon_ball.cpp.o"
   "CMakeFiles/graphics_asgn2.dir/src/color.cpp.o"
+  "CMakeFiles/graphics_asgn2.dir/src/fuel_can.cpp.o"
   "CMakeFiles/graphics_asgn2.dir/src/ground.cpp.o"
   "CMakeFiles/graphics_asgn2.dir/src/indicator.cpp.o"
   "CMakeFiles/graphics_asgn2.dir/src/input.cpp.o"

@@ -249,9 +249,33 @@ CMakeFiles/graphics_asgn2.dir/src/color.cpp.o.provides: CMakeFiles/graphics_asgn
 CMakeFiles/graphics_asgn2.dir/src/color.cpp.o.provides.build: CMakeFiles/graphics_asgn2.dir/src/color.cpp.o
 
 
+CMakeFiles/graphics_asgn2.dir/src/fuel_can.cpp.o: CMakeFiles/graphics_asgn2.dir/flags.make
+CMakeFiles/graphics_asgn2.dir/src/fuel_can.cpp.o: ../src/fuel_can.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/graphics_asgn2.dir/src/fuel_can.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/graphics_asgn2.dir/src/fuel_can.cpp.o -c "/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/fuel_can.cpp"
+
+CMakeFiles/graphics_asgn2.dir/src/fuel_can.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/graphics_asgn2.dir/src/fuel_can.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/fuel_can.cpp" > CMakeFiles/graphics_asgn2.dir/src/fuel_can.cpp.i
+
+CMakeFiles/graphics_asgn2.dir/src/fuel_can.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/graphics_asgn2.dir/src/fuel_can.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/fuel_can.cpp" -o CMakeFiles/graphics_asgn2.dir/src/fuel_can.cpp.s
+
+CMakeFiles/graphics_asgn2.dir/src/fuel_can.cpp.o.requires:
+
+.PHONY : CMakeFiles/graphics_asgn2.dir/src/fuel_can.cpp.o.requires
+
+CMakeFiles/graphics_asgn2.dir/src/fuel_can.cpp.o.provides: CMakeFiles/graphics_asgn2.dir/src/fuel_can.cpp.o.requires
+	$(MAKE) -f CMakeFiles/graphics_asgn2.dir/build.make CMakeFiles/graphics_asgn2.dir/src/fuel_can.cpp.o.provides.build
+.PHONY : CMakeFiles/graphics_asgn2.dir/src/fuel_can.cpp.o.provides
+
+CMakeFiles/graphics_asgn2.dir/src/fuel_can.cpp.o.provides.build: CMakeFiles/graphics_asgn2.dir/src/fuel_can.cpp.o
+
+
 CMakeFiles/graphics_asgn2.dir/src/ground.cpp.o: CMakeFiles/graphics_asgn2.dir/flags.make
 CMakeFiles/graphics_asgn2.dir/src/ground.cpp.o: ../src/ground.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/graphics_asgn2.dir/src/ground.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/graphics_asgn2.dir/src/ground.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/graphics_asgn2.dir/src/ground.cpp.o -c "/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ground.cpp"
 
 CMakeFiles/graphics_asgn2.dir/src/ground.cpp.i: cmake_force
@@ -275,7 +299,7 @@ CMakeFiles/graphics_asgn2.dir/src/ground.cpp.o.provides.build: CMakeFiles/graphi
 
 CMakeFiles/graphics_asgn2.dir/src/indicator.cpp.o: CMakeFiles/graphics_asgn2.dir/flags.make
 CMakeFiles/graphics_asgn2.dir/src/indicator.cpp.o: ../src/indicator.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/graphics_asgn2.dir/src/indicator.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/graphics_asgn2.dir/src/indicator.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/graphics_asgn2.dir/src/indicator.cpp.o -c "/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/indicator.cpp"
 
 CMakeFiles/graphics_asgn2.dir/src/indicator.cpp.i: cmake_force
@@ -299,7 +323,7 @@ CMakeFiles/graphics_asgn2.dir/src/indicator.cpp.o.provides.build: CMakeFiles/gra
 
 CMakeFiles/graphics_asgn2.dir/src/input.cpp.o: CMakeFiles/graphics_asgn2.dir/flags.make
 CMakeFiles/graphics_asgn2.dir/src/input.cpp.o: ../src/input.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/graphics_asgn2.dir/src/input.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/graphics_asgn2.dir/src/input.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/graphics_asgn2.dir/src/input.cpp.o -c "/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/input.cpp"
 
 CMakeFiles/graphics_asgn2.dir/src/input.cpp.i: cmake_force
@@ -323,7 +347,7 @@ CMakeFiles/graphics_asgn2.dir/src/input.cpp.o.provides.build: CMakeFiles/graphic
 
 CMakeFiles/graphics_asgn2.dir/src/main.cpp.o: CMakeFiles/graphics_asgn2.dir/flags.make
 CMakeFiles/graphics_asgn2.dir/src/main.cpp.o: ../src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/graphics_asgn2.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/graphics_asgn2.dir/src/main.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/graphics_asgn2.dir/src/main.cpp.o -c "/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.cpp"
 
 CMakeFiles/graphics_asgn2.dir/src/main.cpp.i: cmake_force
@@ -347,7 +371,7 @@ CMakeFiles/graphics_asgn2.dir/src/main.cpp.o.provides.build: CMakeFiles/graphics
 
 CMakeFiles/graphics_asgn2.dir/src/nonedit.cpp.o: CMakeFiles/graphics_asgn2.dir/flags.make
 CMakeFiles/graphics_asgn2.dir/src/nonedit.cpp.o: ../src/nonedit.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/graphics_asgn2.dir/src/nonedit.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/graphics_asgn2.dir/src/nonedit.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/graphics_asgn2.dir/src/nonedit.cpp.o -c "/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/nonedit.cpp"
 
 CMakeFiles/graphics_asgn2.dir/src/nonedit.cpp.i: cmake_force
@@ -371,7 +395,7 @@ CMakeFiles/graphics_asgn2.dir/src/nonedit.cpp.o.provides.build: CMakeFiles/graph
 
 CMakeFiles/graphics_asgn2.dir/src/other_handlers.cpp.o: CMakeFiles/graphics_asgn2.dir/flags.make
 CMakeFiles/graphics_asgn2.dir/src/other_handlers.cpp.o: ../src/other_handlers.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/graphics_asgn2.dir/src/other_handlers.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/graphics_asgn2.dir/src/other_handlers.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/graphics_asgn2.dir/src/other_handlers.cpp.o -c "/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/other_handlers.cpp"
 
 CMakeFiles/graphics_asgn2.dir/src/other_handlers.cpp.i: cmake_force
@@ -395,7 +419,7 @@ CMakeFiles/graphics_asgn2.dir/src/other_handlers.cpp.o.provides.build: CMakeFile
 
 CMakeFiles/graphics_asgn2.dir/src/parachute.cpp.o: CMakeFiles/graphics_asgn2.dir/flags.make
 CMakeFiles/graphics_asgn2.dir/src/parachute.cpp.o: ../src/parachute.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/graphics_asgn2.dir/src/parachute.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/graphics_asgn2.dir/src/parachute.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/graphics_asgn2.dir/src/parachute.cpp.o -c "/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/parachute.cpp"
 
 CMakeFiles/graphics_asgn2.dir/src/parachute.cpp.i: cmake_force
@@ -419,7 +443,7 @@ CMakeFiles/graphics_asgn2.dir/src/parachute.cpp.o.provides.build: CMakeFiles/gra
 
 CMakeFiles/graphics_asgn2.dir/src/ring.cpp.o: CMakeFiles/graphics_asgn2.dir/flags.make
 CMakeFiles/graphics_asgn2.dir/src/ring.cpp.o: ../src/ring.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/graphics_asgn2.dir/src/ring.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/graphics_asgn2.dir/src/ring.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/graphics_asgn2.dir/src/ring.cpp.o -c "/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ring.cpp"
 
 CMakeFiles/graphics_asgn2.dir/src/ring.cpp.i: cmake_force
@@ -443,7 +467,7 @@ CMakeFiles/graphics_asgn2.dir/src/ring.cpp.o.provides.build: CMakeFiles/graphics
 
 CMakeFiles/graphics_asgn2.dir/src/ssd.cpp.o: CMakeFiles/graphics_asgn2.dir/flags.make
 CMakeFiles/graphics_asgn2.dir/src/ssd.cpp.o: ../src/ssd.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/graphics_asgn2.dir/src/ssd.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/graphics_asgn2.dir/src/ssd.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/graphics_asgn2.dir/src/ssd.cpp.o -c "/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ssd.cpp"
 
 CMakeFiles/graphics_asgn2.dir/src/ssd.cpp.i: cmake_force
@@ -467,7 +491,7 @@ CMakeFiles/graphics_asgn2.dir/src/ssd.cpp.o.provides.build: CMakeFiles/graphics_
 
 CMakeFiles/graphics_asgn2.dir/src/timer.cpp.o: CMakeFiles/graphics_asgn2.dir/flags.make
 CMakeFiles/graphics_asgn2.dir/src/timer.cpp.o: ../src/timer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/graphics_asgn2.dir/src/timer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/graphics_asgn2.dir/src/timer.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/graphics_asgn2.dir/src/timer.cpp.o -c "/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/timer.cpp"
 
 CMakeFiles/graphics_asgn2.dir/src/timer.cpp.i: cmake_force
@@ -491,7 +515,7 @@ CMakeFiles/graphics_asgn2.dir/src/timer.cpp.o.provides.build: CMakeFiles/graphic
 
 CMakeFiles/graphics_asgn2.dir/src/volcano.cpp.o: CMakeFiles/graphics_asgn2.dir/flags.make
 CMakeFiles/graphics_asgn2.dir/src/volcano.cpp.o: ../src/volcano.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/graphics_asgn2.dir/src/volcano.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/graphics_asgn2.dir/src/volcano.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/graphics_asgn2.dir/src/volcano.cpp.o -c "/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/volcano.cpp"
 
 CMakeFiles/graphics_asgn2.dir/src/volcano.cpp.i: cmake_force
@@ -523,6 +547,7 @@ graphics_asgn2_OBJECTS = \
 "CMakeFiles/graphics_asgn2.dir/src/cannon.cpp.o" \
 "CMakeFiles/graphics_asgn2.dir/src/cannon_ball.cpp.o" \
 "CMakeFiles/graphics_asgn2.dir/src/color.cpp.o" \
+"CMakeFiles/graphics_asgn2.dir/src/fuel_can.cpp.o" \
 "CMakeFiles/graphics_asgn2.dir/src/ground.cpp.o" \
 "CMakeFiles/graphics_asgn2.dir/src/indicator.cpp.o" \
 "CMakeFiles/graphics_asgn2.dir/src/input.cpp.o" \
@@ -546,6 +571,7 @@ graphics_asgn2: CMakeFiles/graphics_asgn2.dir/src/bullet.cpp.o
 graphics_asgn2: CMakeFiles/graphics_asgn2.dir/src/cannon.cpp.o
 graphics_asgn2: CMakeFiles/graphics_asgn2.dir/src/cannon_ball.cpp.o
 graphics_asgn2: CMakeFiles/graphics_asgn2.dir/src/color.cpp.o
+graphics_asgn2: CMakeFiles/graphics_asgn2.dir/src/fuel_can.cpp.o
 graphics_asgn2: CMakeFiles/graphics_asgn2.dir/src/ground.cpp.o
 graphics_asgn2: CMakeFiles/graphics_asgn2.dir/src/indicator.cpp.o
 graphics_asgn2: CMakeFiles/graphics_asgn2.dir/src/input.cpp.o
@@ -559,7 +585,7 @@ graphics_asgn2: CMakeFiles/graphics_asgn2.dir/src/timer.cpp.o
 graphics_asgn2: CMakeFiles/graphics_asgn2.dir/src/volcano.cpp.o
 graphics_asgn2: CMakeFiles/graphics_asgn2.dir/build.make
 graphics_asgn2: CMakeFiles/graphics_asgn2.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_20) "Linking CXX executable graphics_asgn2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/masterg/Documents/4th Semester/Graphics/Assignment2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_21) "Linking CXX executable graphics_asgn2"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/graphics_asgn2.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -575,6 +601,7 @@ CMakeFiles/graphics_asgn2.dir/requires: CMakeFiles/graphics_asgn2.dir/src/bullet
 CMakeFiles/graphics_asgn2.dir/requires: CMakeFiles/graphics_asgn2.dir/src/cannon.cpp.o.requires
 CMakeFiles/graphics_asgn2.dir/requires: CMakeFiles/graphics_asgn2.dir/src/cannon_ball.cpp.o.requires
 CMakeFiles/graphics_asgn2.dir/requires: CMakeFiles/graphics_asgn2.dir/src/color.cpp.o.requires
+CMakeFiles/graphics_asgn2.dir/requires: CMakeFiles/graphics_asgn2.dir/src/fuel_can.cpp.o.requires
 CMakeFiles/graphics_asgn2.dir/requires: CMakeFiles/graphics_asgn2.dir/src/ground.cpp.o.requires
 CMakeFiles/graphics_asgn2.dir/requires: CMakeFiles/graphics_asgn2.dir/src/indicator.cpp.o.requires
 CMakeFiles/graphics_asgn2.dir/requires: CMakeFiles/graphics_asgn2.dir/src/input.cpp.o.requires

@@ -339,6 +339,33 @@ src/color.cpp.s:
 	$(MAKE) -f CMakeFiles/graphics_asgn2.dir/build.make CMakeFiles/graphics_asgn2.dir/src/color.cpp.s
 .PHONY : src/color.cpp.s
 
+src/fuel_can.o: src/fuel_can.cpp.o
+
+.PHONY : src/fuel_can.o
+
+# target to build an object file
+src/fuel_can.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn2.dir/build.make CMakeFiles/graphics_asgn2.dir/src/fuel_can.cpp.o
+.PHONY : src/fuel_can.cpp.o
+
+src/fuel_can.i: src/fuel_can.cpp.i
+
+.PHONY : src/fuel_can.i
+
+# target to preprocess a source file
+src/fuel_can.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn2.dir/build.make CMakeFiles/graphics_asgn2.dir/src/fuel_can.cpp.i
+.PHONY : src/fuel_can.cpp.i
+
+src/fuel_can.s: src/fuel_can.cpp.s
+
+.PHONY : src/fuel_can.s
+
+# target to generate assembly for a file
+src/fuel_can.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn2.dir/build.make CMakeFiles/graphics_asgn2.dir/src/fuel_can.cpp.s
+.PHONY : src/fuel_can.cpp.s
+
 src/ground.o: src/ground.cpp.o
 
 .PHONY : src/ground.o
@@ -669,6 +696,9 @@ help:
 	@echo "... src/color.o"
 	@echo "... src/color.i"
 	@echo "... src/color.s"
+	@echo "... src/fuel_can.o"
+	@echo "... src/fuel_can.i"
+	@echo "... src/fuel_can.s"
 	@echo "... src/ground.o"
 	@echo "... src/ground.i"
 	@echo "... src/ground.s"

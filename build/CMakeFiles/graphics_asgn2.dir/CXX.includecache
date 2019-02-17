@@ -80,6 +80,16 @@ main.h
 main.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
 
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/fuel_can.cpp
+fuel_can.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/fuel_can.h
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/fuel_can.h
+main.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/main.h
+
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ground.cpp
 ground.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/ground.h
@@ -149,6 +159,8 @@ cannon_ball.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/cannon_ball.h
 parachute.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/parachute.h
+fuel_can.h
+/home/masterg/Documents/4th Semester/Graphics/Assignment2/src/fuel_can.h
 arrow.h
 /home/masterg/Documents/4th Semester/Graphics/Assignment2/src/arrow.h
 indicator.h

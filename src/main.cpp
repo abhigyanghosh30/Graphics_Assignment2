@@ -11,6 +11,7 @@
 #include "cannon.h"
 #include "cannon_ball.h"
 #include "parachute.h"
+#include "fuel_can.h"
 #include "arrow.h"
 #include "indicator.h"
 
@@ -30,6 +31,7 @@ Ground ground;
 // SSD speed2;
 Bar alt;
 Bar lives_bar;
+Bar fuel_bar;
 vector <Volcano> volcanoes;
 vector <Bomb> bombs;
 vector <Ring> rings;
@@ -37,11 +39,12 @@ vector <Bullet> bullets;
 vector <Cannon> cannons;
 vector <CannonBall> cannon_balls;
 vector <Parachute> parachutes;
+vector <FuelCan> fuel_cans;
 Indicator indicator;
 Arrow arrow;
 
 int lives;
-
+int fuel;
 float screen_zoom = 0.1f, screen_center_x = 0, screen_center_y = 0;
 float camera_rotation_angle = 0;
 float eye_x, eye_y, eye_z, t = 90;
@@ -125,6 +128,9 @@ void draw() {
     }
     for(vector<Parachute>::iterator parachute = parachutes.begin(); parachute != parachutes.end(); parachute++) {
         parachute->draw(VP);
+    }
+    for(vector<FuelCan>::iterator fuel_can = fuel_cans.begin(); fuel_can != fuel_cans.end(); fuel_can++) {
+        fuel_can->draw(VP);
     }
     arrow.draw(VP);
     // Matrices.view = glm::lookAt( glm::vec3(0,0,-3), glm::vec3(0,0,0),glm::vec3(0,1,0) );
@@ -249,10 +255,17 @@ void tick_elements() {
             parachute--;
         }
     }
+    for(vector<FuelCan>::iterator fuel_can=fuel_cans.begin();fuel_can!=fuel_cans.end();fuel_can++){
+        fuel_can->tick();
+        if(fuel_can->position.y<-10){
+            fuel_cans.erase(fuel_can);
+            fuel_can--;
+        }
+    }
 
     glm::vec3 direction = rings.begin()->position - plane.position;
     // cout<<arrow.yaw<<endl;
-    cout<<plane.position.x<<","<<plane.position.y<<","<<plane.position.z<<endl;
+    // cout<<plane.position.x<<","<<plane.position.y<<","<<plane.position.z<<endl;
     // cout<<rings.begin()->position.x<<","<<rings.begin()->position.y<<","<<rings.begin()->position.z<<endl;
     
     if(direction.z<0){
@@ -425,7 +438,11 @@ void check_collisions() {
 }
 
 void spawn_elements(){
-    if(rand()%10000 > 9000) {
+    if(rand()%10000 < 2250) {
         parachutes.push_back(Parachute(rand()%1000-500,rand()%500-250));
     }
+    if(rand()%10000 < 7250) {
+        fuel_cans.push_back(FuelCan(rand()%1000-500,rand()%500-250));
+    }
+
 }
