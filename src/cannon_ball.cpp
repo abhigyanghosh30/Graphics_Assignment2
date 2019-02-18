@@ -4,7 +4,7 @@
 CannonBall::CannonBall(float x, float z, float yaw) {
     this->position = glm::vec3(x,-10,z);
     this->yaw = yaw;
-    this->speed = glm::vec3(0,1.5,0);
+    this->speed = glm::vec3(0,3,0);
     static GLfloat vertex_buffer_data[3200];
     for(int i=0;i<100;i++){
         vertex_buffer_data[18*i] = 0.25*(cos(2*M_PI*i/100));;
@@ -52,7 +52,7 @@ void CannonBall::draw(glm::mat4 VP) {
 }
 
 void CannonBall::tick() {
-    this->speed.y -= 0.07;
+    this->speed.y -= 0.08;
     this->speed.x = 1.0f * sin(this->yaw);
     this->speed.z = 1.0f * cos(this->yaw);
 

@@ -295,14 +295,21 @@ void initGL(GLFWwindow *window, int width, int height) {
     }
     rings.push_back(Ring(0,10,0));
     for(int i=0;i<30;i++) {
-        rings.push_back(Ring(rand()%1000-500,rand()%20,rand()%500-250));
+        float ring_x = rand()%1000-500;
+        float ring_y = rand()%20;
+        float ring_z = rand()%500-250;
+        rings.push_back(Ring(ring_x,ring_y,ring_z));
+        cannons.push_back(Cannon(ring_x+8.0f,ring_z+8.0f));
+        cannons.push_back(Cannon(ring_x-8.0f,ring_z+8.0f));
+        cannons.push_back(Cannon(ring_x+8.0f,ring_z-8.0f));
+        cannons.push_back(Cannon(ring_x-8.0f,ring_z-8.0f));
     }
 
     indicator = Indicator(rings.begin()->position.x,rings.begin()->position.y + 3,rings.begin()->position.z);
 
-    for(int i=0;i<15;i++) {
-        cannons.push_back(Cannon(rand()%1000-500,rand()%500-250));
-    }
+    // for(int i=0;i<15;i++) {
+    //     cannons.push_back(Cannon(rand()%1000-500,rand()%500-250));
+    // }
     // Create and compile our GLSL program from the shaders
     programID = LoadShaders("Sample_GL.vert", "Sample_GL.frag");
     // Get a handle for our "MVP" uniform
@@ -426,6 +433,13 @@ void check_collisions() {
             parachutes.erase(parachute);
             parachute--;
             lives++;
+        }
+    }
+    for(vector<FuelCan>::iterator fuel_can=fuel_cans.begin(); fuel_can != fuel_cans.end(); fuel_can++) {
+        if(glm::length(fuel_can->position-plane.position)<2){
+            fuel_cans.erase(fuel_can);
+            fuel_can--;
+            fuel++;
         }
     }
     for(vector<CannonBall>::iterator cannon_ball = cannon_balls.begin(); cannon_ball != cannon_balls.end(); cannon_ball++) {
