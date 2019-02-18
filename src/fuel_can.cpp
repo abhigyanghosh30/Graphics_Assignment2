@@ -56,5 +56,5 @@ void FuelCan::draw(glm::mat4 VP) {
 }
 
 void FuelCan::tick() {
-    this->position.y-=0.1;
+    this->position.y-=0.05;
 }
