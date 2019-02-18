@@ -44,7 +44,7 @@ Indicator indicator;
 Arrow arrow;
 
 int lives;
-int fuel;
+int fuel = 60;
 float screen_zoom = 0.1f, screen_center_x = 0, screen_center_y = 0;
 float camera_rotation_angle = 0;
 float eye_x, eye_y, eye_z, t = 90;
@@ -52,6 +52,7 @@ float up_x = 0, up_y = 1, up_z = 0;
 int camera_view = 0;
 
 Timer t60(1.0 / 60);
+Timer t1(1.0);
 
 /* Render the scene with openGL */
 /* Edit this function according to your assignment */
@@ -140,6 +141,7 @@ void draw() {
     // speed2.draw(VP);
     alt.draw(VP1);
     lives_bar.draw(VP1);
+    fuel_bar.draw(VP1);
     indicator.draw(VP);
 }
 
@@ -211,6 +213,7 @@ void tick_elements() {
     plane.tick();
     plane.speed.x = 0.5 * sin(plane.yaw*M_PI / 180.0f);
     plane.speed.z = 0.5 * cos(plane.yaw*M_PI / 180.0f);
+
     // speed1.set_position(plane.position.x+2,plane.position.y+2,plane.position.z+3);
     // speed2.set_position(plane.position.x,plane.position.y+2,plane.position.z+3);
     // alt.set_position(plane.position.x,plane.position.y-4, plane.position.z);
@@ -220,6 +223,7 @@ void tick_elements() {
     // speed2.set_score((mag_speed/10)%10);
     alt.set_score(plane.position.y+10);
     lives_bar.set_score(30-lives);
+    fuel_bar.set_score(fuel);
     for(vector<Bomb>::iterator bomb=bombs.begin();bomb!=bombs.end();bomb++) {
         bomb->tick();
         if(bomb->position.y<-10){
@@ -290,6 +294,7 @@ void initGL(GLFWwindow *window, int width, int height) {
     // speed2 = SSD(2,0);
     alt = Bar(-3,-3,0,10,COLOR_LAVAYELLOW);
     lives_bar = Bar(-3,-2,0,30,COLOR_BLUE);
+    fuel_bar = Bar(-3,-2.5,0,30,COLOR_YELLOW);
     for(int i=0;i<50;i++) {
         volcanoes.push_back(Volcano(rand()%1000-500,rand()%500-250));
     }
@@ -357,8 +362,11 @@ int main(int argc, char **argv) {
             spawn_elements();
             tick_input(window);
         }
-        if(plane.position.y == -9){
+        if(plane.position.y <= -10 || fuel<=0 ){
             quit(window);
+        }
+        if(t1.processTick()){
+            fuel-=0.01;
         }
         // Poll for Keyboard and mouse events
         glfwPollEvents();
