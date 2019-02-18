@@ -54,7 +54,7 @@ void Bullet::draw(glm::mat4 VP) {
 }
 
 void Bullet::tick(){
-    this->speed.y -= 0.05;
+    this->speed.y -= 0.005;
     this->speed.x = 5.0f * sin(this->yaw*M_PI / 180.0f);
     this->speed.z = 5.0f * cos(this->yaw*M_PI / 180.0f);
 

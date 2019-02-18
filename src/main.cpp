@@ -49,6 +49,7 @@ float screen_zoom = 0.1f, screen_center_x = 0, screen_center_y = 0;
 float camera_rotation_angle = 0;
 float eye_x, eye_y, eye_z, t = 90;
 float up_x = 0, up_y = 1, up_z = 0;
+float t_x,t_y,t_z;
 int camera_view = 0;
 
 Timer t60(1.0 / 60);
@@ -70,6 +71,10 @@ void draw() {
         eye_x = plane.position.x + 3.0f * cos( t * M_PI / 180.0f);
         eye_y = plane.position.y + 3.0f;
         eye_z = plane.position.z - 3.0f * sin(t * M_PI / 180.0f);
+        t_x = plane.position.x;
+        t_y = plane.position.y;
+        t_z = plane.position.z;
+        
         up_x = 0;
         up_y = 1;
         up_z = 0;
@@ -79,13 +84,28 @@ void draw() {
         eye_x = plane.position.x;
         eye_y = plane.position.y+20;
         eye_z = plane.position.z;
+        t_x = plane.position.x;
+        t_y = plane.position.y;
+        t_z = plane.position.z;
         up_x = 0;
         up_y = 0;
         up_z = 1;
     }
+    if(camera_view == 2)
+    {
+        eye_x = plane.position.x;
+        eye_y = plane.position.y+1;
+        eye_z = plane.position.z;
+        t_x = plane.position.x - 3.0f * cos( t * M_PI / 180.0f);
+        t_y = plane.position.y;
+        t_z = plane.position.z + 3.0f * sin(t * M_PI / 180.0f);
+        up_x = 0;
+        up_y = 1;
+        up_z = 0;
+    }
     glm::vec3 eye (eye_x, eye_y, eye_z);
     // Target - Where is the camera looking at.  Don't change unless you are sure!!
-    glm::vec3 target (plane.position.x, plane.position.y, plane.position.z);
+    glm::vec3 target (t_x, t_y, t_z);
     // Up - Up vector defines tilt of camera.  Don't change unless you are sure!!
     glm::vec3 up (up_x, up_y, up_z);
  
@@ -205,7 +225,7 @@ void tick_input(GLFWwindow *window) {
         bullets.push_back(Bullet(plane.position.x,plane.position.y,plane.position.z,plane.yaw));
     }
     if(c) {
-        camera_view = (camera_view+1)%2;
+        camera_view = (camera_view+1)%3;
     }
 }
 
@@ -403,6 +423,7 @@ void check_collisions() {
     {
         if(sqrt((plane.position.y - ring->position.y)*(plane.position.y - ring->position.y)+(plane.position.x - ring->position.x)*(plane.position.x - ring->position.x)+(plane.position.z - ring->position.z)*(plane.position.z - ring->position.z)) < 8) {
             lives--;
+            fuel+=5;
             rings.erase(ring);
             ring--;
         }
