@@ -32,6 +32,9 @@ Ground ground;
 Bar alt;
 Bar lives_bar;
 Bar fuel_bar;
+SSD dist0_bar;
+SSD dist1_bar;
+SSD dist2_bar;
 vector <Volcano> volcanoes;
 vector <Bomb> bombs;
 vector <Ring> rings;
@@ -162,6 +165,9 @@ void draw() {
     alt.draw(VP1);
     lives_bar.draw(VP1);
     fuel_bar.draw(VP1);
+    dist0_bar.draw(VP1);
+    dist1_bar.draw(VP1);
+    dist2_bar.draw(VP1);
     indicator.draw(VP);
 }
 
@@ -244,6 +250,9 @@ void tick_elements() {
     alt.set_score(plane.position.y+10);
     lives_bar.set_score(30-lives);
     fuel_bar.set_score(fuel);
+    dist0_bar.set_score(int(glm::length(plane.position - rings.begin()->position))%10);
+    dist1_bar.set_score(int(glm::length(plane.position - rings.begin()->position)/10)%10);
+    dist2_bar.set_score(int(glm::length(plane.position - rings.begin()->position)/100)%10);
     for(vector<Bomb>::iterator bomb=bombs.begin();bomb!=bombs.end();bomb++) {
         bomb->tick();
         if(bomb->position.y<-10){
@@ -315,6 +324,9 @@ void initGL(GLFWwindow *window, int width, int height) {
     alt = Bar(-3,-3,0,10,COLOR_LAVAYELLOW);
     lives_bar = Bar(-3,-2,0,30,COLOR_BLUE);
     fuel_bar = Bar(-3,-2.5,0,30,COLOR_YELLOW);
+    dist0_bar = SSD(1,0);
+    dist1_bar = SSD(0.5,0);
+    dist2_bar = SSD(0,0);
     for(int i=0;i<50;i++) {
         volcanoes.push_back(Volcano(rand()%1000-500,rand()%500-250));
     }
@@ -468,7 +480,7 @@ void check_collisions() {
         if(glm::length(fuel_can->position-plane.position)<2){
             fuel_cans.erase(fuel_can);
             fuel_can--;
-            fuel++;
+            fuel+=5;
         }
     }
     for(vector<CannonBall>::iterator cannon_ball = cannon_balls.begin(); cannon_ball != cannon_balls.end(); cannon_ball++) {

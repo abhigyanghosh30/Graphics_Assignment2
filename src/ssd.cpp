@@ -2,7 +2,7 @@
 #include "main.h"
 
 SSD::SSD(float place,int num){
-    this->position = glm::vec3(place, 10 ,0);
+    this->position = glm::vec3(place, 0 ,0);
     this->value=num;
     static GLfloat vertex_buffer_data_1[] = {
         -1.0f,1.0f,0.0f,//A
@@ -79,9 +79,10 @@ SSD::SSD(float place,int num){
 void SSD::draw(glm::mat4 VP) {
     Matrices.model = glm::mat4(1.0f);
     glm::mat4 translate = glm::translate (this->position);    // glTranslatef
+    glm::mat4 scale = glm::scale(glm::vec3(0.1f,0.1f,0.1f));
     // No need as coords centered at 0, 0, 0 of cube arouund which we waant to rotate
     // rotate          = rotate * glm::translate(glm::vec3(0, -0.6, 0));
-    Matrices.model *= (translate);
+    Matrices.model *= (translate * scale);
     glm::mat4 MVP = VP * Matrices.model;
     glUniformMatrix4fv(Matrices.MatrixID, 1, GL_FALSE, &MVP[0][0]);
     switch (this->value)
