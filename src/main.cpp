@@ -411,6 +411,11 @@ int main(int argc, char **argv) {
         }
         if(plane.position.y <= -10 || fuel<=0 ){
             quit(window);
+            return 0;
+        }
+        if(lives>=30){
+            quit(window);
+            return 0;
         }
         if(t1.processTick()){
             fuel-=0.01;
