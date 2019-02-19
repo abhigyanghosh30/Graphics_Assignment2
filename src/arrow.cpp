@@ -10,7 +10,7 @@ Arrow::Arrow(float x, float y, float z) {
         -0.25f,0.0f,0.0f,
         0.0f,0.0f,1.0f,
     };
-    this->object = create3DObject(GL_TRIANGLES,3,vertex_buffer_data,COLOR_RED,GL_FILL);
+    this->object = create3DObject(GL_TRIANGLES,3,vertex_buffer_data,COLOR_YELLOW,GL_FILL);
 }
 
 void Arrow::draw(glm::mat4 VP) {

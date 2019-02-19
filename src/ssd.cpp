@@ -2,7 +2,7 @@
 #include "main.h"
 
 SSD::SSD(float place,int num){
-    this->position = glm::vec3(place, 0 ,0);
+    this->position = glm::vec3(place, -1 ,0);
     this->value=num;
     static GLfloat vertex_buffer_data_1[] = {
         -1.0f,1.0f,0.0f,//A
@@ -67,13 +67,13 @@ SSD::SSD(float place,int num){
         -1.0f,0.0f,0.0f,//P
     };
 
-    this->seg_1 = create3DObject(GL_TRIANGLES, 2*3, vertex_buffer_data_1, COLOR_BLUE,GL_FILL);
-    this->seg_2 = create3DObject(GL_TRIANGLES, 2*3, vertex_buffer_data_2, COLOR_BLUE,GL_FILL);
-    this->seg_3 = create3DObject(GL_TRIANGLES, 4*3, vertex_buffer_data_3, COLOR_BLUE,GL_FILL);
-    this->seg_4 = create3DObject(GL_TRIANGLES, 2*3, vertex_buffer_data_4, COLOR_BLUE,GL_FILL);
-    this->seg_5 = create3DObject(GL_TRIANGLES, 2*3, vertex_buffer_data_5, COLOR_BLUE,GL_FILL);
-    this->seg_6 = create3DObject(GL_TRIANGLES, 2*3, vertex_buffer_data_6, COLOR_BLUE,GL_FILL);
-    this->seg_7 = create3DObject(GL_TRIANGLES, 2*3, vertex_buffer_data_7, COLOR_BLUE,GL_FILL);
+    this->seg_1 = create3DObject(GL_TRIANGLES, 2*3, vertex_buffer_data_1, COLOR_YELLOW,GL_FILL);
+    this->seg_2 = create3DObject(GL_TRIANGLES, 2*3, vertex_buffer_data_2, COLOR_YELLOW,GL_FILL);
+    this->seg_3 = create3DObject(GL_TRIANGLES, 4*3, vertex_buffer_data_3, COLOR_YELLOW,GL_FILL);
+    this->seg_4 = create3DObject(GL_TRIANGLES, 2*3, vertex_buffer_data_4, COLOR_YELLOW,GL_FILL);
+    this->seg_5 = create3DObject(GL_TRIANGLES, 2*3, vertex_buffer_data_5, COLOR_YELLOW,GL_FILL);
+    this->seg_6 = create3DObject(GL_TRIANGLES, 2*3, vertex_buffer_data_6, COLOR_YELLOW,GL_FILL);
+    this->seg_7 = create3DObject(GL_TRIANGLES, 2*3, vertex_buffer_data_7, COLOR_YELLOW,GL_FILL);
 }
 
 void SSD::draw(glm::mat4 VP) {

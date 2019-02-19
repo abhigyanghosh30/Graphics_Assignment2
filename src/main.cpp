@@ -336,10 +336,10 @@ void initGL(GLFWwindow *window, int width, int height) {
         float ring_y = rand()%20;
         float ring_z = rand()%500-250;
         rings.push_back(Ring(ring_x,ring_y,ring_z));
-        cannons.push_back(Cannon(ring_x+8.0f,ring_z+8.0f));
-        cannons.push_back(Cannon(ring_x-8.0f,ring_z+8.0f));
-        cannons.push_back(Cannon(ring_x+8.0f,ring_z-8.0f));
-        cannons.push_back(Cannon(ring_x-8.0f,ring_z-8.0f));
+        cannons.push_back(Cannon(ring_x+20.0f,ring_z+20.0f));
+        cannons.push_back(Cannon(ring_x-20.0f,ring_z+20.0f));
+        cannons.push_back(Cannon(ring_x+20.0f,ring_z-20.0f));
+        cannons.push_back(Cannon(ring_x-20.0f,ring_z-20.0f));
     }
 
     indicator = Indicator(rings.begin()->position.x,rings.begin()->position.y + 3,rings.begin()->position.z);
