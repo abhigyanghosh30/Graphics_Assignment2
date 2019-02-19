@@ -96,12 +96,22 @@ void draw() {
     }
     if(camera_view == 2)
     {
-        eye_x = plane.position.x;
-        eye_y = plane.position.y+1;
-        eye_z = plane.position.z;
+        eye_x = plane.position.x - 2.9f * cos( t * M_PI / 180.0f);
+        eye_y = plane.position.y;
+        eye_z = plane.position.z + 2.9f * sin(t * M_PI / 180.0f);;
         t_x = plane.position.x - 3.0f * cos( t * M_PI / 180.0f);
         t_y = plane.position.y;
         t_z = plane.position.z + 3.0f * sin(t * M_PI / 180.0f);
+        up_x = 0;
+        up_y = 1;
+        up_z = 0;
+    }
+    if(camera_view == 3)
+    {
+        eye_x = eye_y = eye_z = 0;
+        t_x = plane.position.x;
+        t_y = plane.position.y;
+        t_z = plane.position.z;
         up_x = 0;
         up_y = 1;
         up_z = 0;
@@ -231,7 +241,7 @@ void tick_input(GLFWwindow *window) {
         bullets.push_back(Bullet(plane.position.x,plane.position.y,plane.position.z,plane.yaw));
     }
     if(c) {
-        camera_view = (camera_view+1)%3;
+        camera_view = (camera_view+1)%4;
     }
 }
 
@@ -306,6 +316,11 @@ void tick_elements() {
     }
     else{
         arrow.tick(atan(direction.x/direction.z),atan(direction.y/((direction.x)*(direction.x)+(direction.z)*(direction.z))),plane.position.x,plane.position.y+2, plane.position.z);
+    }
+    if(camera_view == 2){
+        arrow.position.x = plane.position.x - 6.0f * cos( t * M_PI / 180.0f);
+        arrow.position.y = plane.position.y - 0.5f;
+        arrow.position.z = plane.position.z + 6.0f * sin( t * M_PI / 180.0f);
     }
     indicator.set_position(rings.begin()->position.x,rings.begin()->position.y + 3,rings.begin()->position.z);
 }
