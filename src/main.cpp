@@ -50,10 +50,10 @@ int lives;
 int fuel = 60;
 float screen_zoom = 0.1f, screen_center_x = 0, screen_center_y = 0;
 float camera_rotation_angle = 0;
-float eye_x, eye_y, eye_z, t = 90;
+float eye_x, eye_y, eye_z, horizontal = 90, vertical = 0;
 float up_x = 0, up_y = 1, up_z = 0;
 float t_x,t_y,t_z;
-int camera_view = 0;
+int camera_view = 4;
 
 Timer t60(1.0 / 60);
 Timer t1(1.0);
@@ -71,13 +71,17 @@ void draw() {
     // Eye - Location of camera. Don't change unless you are sure!!
     if(camera_view == 0)
     {   
-        eye_x = plane.position.x + 3.0f * cos( t * M_PI / 180.0f);
-        eye_y = plane.position.y + 3.0f;
-        eye_z = plane.position.z - 3.0f * sin(t * M_PI / 180.0f);
-        t_x = plane.position.x;
-        t_y = plane.position.y;
-        t_z = plane.position.z;
+        double xpos, ypos;
+        glfwGetCursorPos(window, &xpos, &ypos);
+
+        eye_x = plane.position.x + 3.0f * cos(horizontal * M_PI / 180.0f);
+        eye_y = plane.position.y + 3.0f * cos(vertical * M_PI / 180.0f);
+        eye_z = plane.position.z - 3.0f * sin(horizontal * M_PI / 180.0f);
         
+        t_x = plane.position.x;
+        t_y = plane.position.y; 
+        t_z = plane.position.z;
+
         up_x = 0;
         up_y = 1;
         up_z = 0;
@@ -96,12 +100,12 @@ void draw() {
     }
     if(camera_view == 2)
     {
-        eye_x = plane.position.x - 2.9f * cos( t * M_PI / 180.0f);
+        eye_x = plane.position.x - 2.9f * cos( horizontal * M_PI / 180.0f);
         eye_y = plane.position.y;
-        eye_z = plane.position.z + 2.9f * sin(t * M_PI / 180.0f);;
-        t_x = plane.position.x - 3.0f * cos( t * M_PI / 180.0f);
+        eye_z = plane.position.z + 2.9f * sin(horizontal *  M_PI / 180.0f);;
+        t_x = plane.position.x - 3.0f * cos( horizontal * M_PI / 180.0f);
         t_y = plane.position.y;
-        t_z = plane.position.z + 3.0f * sin(t * M_PI / 180.0f);
+        t_z = plane.position.z + 3.0f * sin(horizontal * M_PI / 180.0f);
         up_x = 0;
         up_y = 1;
         up_z = 0;
@@ -116,6 +120,21 @@ void draw() {
         up_y = 1;
         up_z = 0;
     }
+    if(camera_view == 4)
+    {
+        eye_x = plane.position.x + 3.0 * cos((plane.yaw + 90) * M_PI / 180.0f );
+        eye_y = plane.position.y + 3.0f;
+        eye_z = plane.position.z - 3.0 * sin((plane.yaw + 90) * M_PI / 180.0f );
+        
+        t_x = plane.position.x;
+        t_y = plane.position.y; 
+        t_z = plane.position.z;
+
+        up_x = 0;
+        up_y = 1;
+        up_z = 0;
+    }
+
     glm::vec3 eye (eye_x, eye_y, eye_z);
     // Target - Where is the camera looking at.  Don't change unless you are sure!!
     glm::vec3 target (t_x, t_y, t_z);
@@ -197,17 +216,19 @@ void tick_input(GLFWwindow *window) {
     int mouse_right = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT);
     if (d) {
         plane.yaw -= 1;
-        t = plane.yaw + 90;
+        horizontal = plane.yaw + 90;
+        vertical = 0;
     }
     if(a){
         plane.yaw += 1;
-        t = plane.yaw + 90;
+        horizontal = plane.yaw + 90;
+        vertical = 0;
     }
     if(up) {
-        t+=1.0f;
+        horizontal+=1.0f;
     }
     if(down) {
-        t-=1.0f;
+        horizontal-=1.0f;
     }
     if(left || a) {
         plane.roll = plane.roll <= -30 ? -30 : plane.roll - 1;
@@ -243,6 +264,23 @@ void tick_input(GLFWwindow *window) {
     // if(c) {
     //     camera_view = (camera_view+1)%4;
     // }
+
+    double xpos, ypos;
+    glfwGetCursorPos(window, &xpos, &ypos);
+
+    if(xpos > 640){
+        horizontal += 1.0f;
+    }
+    if(xpos < 440){
+        horizontal -= 1.0f;
+    }
+    if(ypos > 640){
+        vertical += 1.0f;
+    }
+    if(ypos < 440){
+        vertical -= 1.0f;
+    }
+
 }
 
 void tick_elements() {
@@ -318,9 +356,9 @@ void tick_elements() {
         arrow.tick(atan(direction.x/direction.z),atan(direction.y/((direction.x)*(direction.x)+(direction.z)*(direction.z))),plane.position.x,plane.position.y+2, plane.position.z);
     }
     if(camera_view == 2){
-        arrow.position.x = plane.position.x - 6.0f * cos( t * M_PI / 180.0f);
+        arrow.position.x = plane.position.x - 6.0f * cos( horizontal * M_PI / 180.0f);
         arrow.position.y = plane.position.y - 0.5f;
-        arrow.position.z = plane.position.z + 6.0f * sin( t * M_PI / 180.0f);
+        arrow.position.z = plane.position.z + 6.0f * sin( horizontal * M_PI / 180.0f);
     }
     indicator.set_position(rings.begin()->position.x,rings.begin()->position.y + 3,rings.begin()->position.z);
 }
@@ -409,17 +447,17 @@ int main(int argc, char **argv) {
             spawn_elements();
             tick_input(window);
         }
-        if(plane.position.y <= -10 || fuel<=0 ){
-            quit(window);
-            return 0;
-        }
-        if(lives>=30){
-            quit(window);
-            return 0;
-        }
-        if(t1.processTick()){
-            fuel-=0.01;
-        }
+        // if(plane.position.y <= -10 || fuel<=0 ){
+        //     quit(window);
+        //     return 0;
+        // }
+        // if(lives>=30){
+        //     quit(window);
+        //     return 0;
+        // }
+        // if(t1.processTick()){
+        //     fuel-=0.01;
+        // }
         // Poll for Keyboard and mouse events
         glfwPollEvents();
     }
@@ -438,7 +476,7 @@ void reset_screen() {
     float left   = screen_center_x - 4 / screen_zoom;
     float right  = screen_center_x + 4 / screen_zoom;
     // if(camera_view == 0)
-    Matrices.projection = glm::perspective(float(M_PI_2), 1.0f, 0.1f, 500.0f);
+    Matrices.projection = glm::perspective(float(M_PI_2 * screen_zoom), 1.0f, 0.1f, 500.0f);
     // if(camera_view == 1)
     //     Matrices.projection = glm::ortho(left,right,bottom,top,0.1f,100.0f);
 
