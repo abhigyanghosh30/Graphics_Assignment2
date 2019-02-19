@@ -187,7 +187,7 @@ void tick_input(GLFWwindow *window) {
     int up = glfwGetKey(window, GLFW_KEY_UP);
     int down = glfwGetKey(window, GLFW_KEY_DOWN);
     int a = glfwGetKey(window, GLFW_KEY_A);
-    int c = glfwGetKey(window, GLFW_KEY_C);
+    // int c = glfwGetKey(window, GLFW_KEY_C);
     int d = glfwGetKey(window, GLFW_KEY_D);
     int w = glfwGetKey(window, GLFW_KEY_W);
     int s = glfwGetKey(window, GLFW_KEY_S);
@@ -240,9 +240,9 @@ void tick_input(GLFWwindow *window) {
         // cout<<"Left"<<endl;
         bullets.push_back(Bullet(plane.position.x,plane.position.y,plane.position.z,plane.yaw));
     }
-    if(c) {
-        camera_view = (camera_view+1)%4;
-    }
+    // if(c) {
+    //     camera_view = (camera_view+1)%4;
+    // }
 }
 
 void tick_elements() {

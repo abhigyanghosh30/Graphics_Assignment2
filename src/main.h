@@ -34,6 +34,8 @@ void keyboardChar(GLFWwindow *window, unsigned int key);
 void mouseButton(GLFWwindow *window, int button, int action, int mods);
 void scroll_callback(GLFWwindow *window, double xoffset, double yoffset);
 
+extern int camera_view;
+
 // other_handlers.cpp
 void error_callback(int error, const char *description);
 void quit(GLFWwindow *window);
