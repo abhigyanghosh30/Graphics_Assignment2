@@ -48,7 +48,7 @@ Arrow arrow;
 
 int lives;
 int fuel = 60;
-float screen_zoom = 0.1f, screen_center_x = 0, screen_center_y = 0;
+float screen_zoom = 1.0f, screen_center_x = 0, screen_center_y = 0;
 float camera_rotation_angle = 0;
 float eye_x, eye_y, eye_z, horizontal = 90, vertical = 0;
 float up_x = 0, up_y = 1, up_z = 0;
@@ -447,17 +447,17 @@ int main(int argc, char **argv) {
             spawn_elements();
             tick_input(window);
         }
-        // if(plane.position.y <= -10 || fuel<=0 ){
-        //     quit(window);
-        //     return 0;
-        // }
-        // if(lives>=30){
-        //     quit(window);
-        //     return 0;
-        // }
-        // if(t1.processTick()){
-        //     fuel-=0.01;
-        // }
+        if(plane.position.y <= -10 || fuel<=0 ){
+            quit(window);
+            return 0;
+        }
+        if(lives>=30){
+            quit(window);
+            return 0;
+        }
+        if(t1.processTick()){
+            fuel-=0.01;
+        }
         // Poll for Keyboard and mouse events
         glfwPollEvents();
     }
