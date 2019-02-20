@@ -492,7 +492,8 @@ void reset_screen() {
 void check_collisions() { 
     for(vector<Volcano>::iterator volcano = volcanoes.begin();volcano!=volcanoes.end();volcano++) {
         if(plane.position.y < 10  && sqrt((plane.position.x - volcano->position.x)*(plane.position.x - volcano->position.x)+(plane.position.z - volcano->position.z)*(plane.position.z - volcano->position.z))<8){
-            cout<<"Quit "<<lives++<<endl;
+            // cout<<"Quit "<<lives++<<endl;
+            lives++;
             // quit(window);
         }
     }
