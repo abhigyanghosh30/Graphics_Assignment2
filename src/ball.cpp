@@ -3,7 +3,8 @@
 
 Ball::Ball(float x, float y, float z) {
     this->position = glm::vec3(x, y, z);
-    this->speed = glm::vec3(0,0,0);
+    this->velocity = glm::vec3(0,0,0);
+    this->speed = 0;
     this->yaw = this->pitch = this->roll = 0.0f;
     static GLfloat vertex_buffer_data[3200];
     for(int i=0;i<100;i++){
@@ -78,6 +79,8 @@ void Ball::set_position(float x, float y, float z) {
 }
 
 void Ball::tick() {
-    this->position += this->speed;
+    this->velocity.x = this->speed * sin(this->yaw * M_PI / 180.0f);
+    this->velocity.z = this->speed * cos(this->yaw * M_PI / 180.0f);
+    this->position += this->velocity;
 }
 

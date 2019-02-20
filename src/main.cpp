@@ -27,8 +27,8 @@ GLFWwindow *window;
 
 Ball plane;
 Ground ground;
-// SSD speed1;
-// SSD speed2;
+SSD speed1;
+SSD speed2;
 Bar alt;
 Bar lives_bar;
 Bar fuel_bar;
@@ -197,6 +197,8 @@ void draw() {
     dist0_bar.draw(VP1);
     dist1_bar.draw(VP1);
     dist2_bar.draw(VP1);
+    speed1.draw(VP1);
+    speed2.draw(VP1);
     indicator.draw(VP);
 }
 
@@ -208,10 +210,13 @@ void tick_input(GLFWwindow *window) {
     int a = glfwGetKey(window, GLFW_KEY_A);
     // int c = glfwGetKey(window, GLFW_KEY_C);
     int d = glfwGetKey(window, GLFW_KEY_D);
+    int q = glfwGetKey(window, GLFW_KEY_Q);
+    int e = glfwGetKey(window, GLFW_KEY_E);
     int w = glfwGetKey(window, GLFW_KEY_W);
     int s = glfwGetKey(window, GLFW_KEY_S);
     int space = glfwGetKey(window, GLFW_KEY_SPACE);
     int shift = glfwGetKey(window, GLFW_KEY_LEFT_SHIFT);
+    int left_alt = glfwGetKey(window, GLFW_KEY_LEFT_ALT);
     int mouse_left = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT);
     int mouse_right = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT);
     if (d) {
@@ -236,24 +241,26 @@ void tick_input(GLFWwindow *window) {
     if(right || d ) {
         plane.roll = plane.roll >= 30 ? 30 : plane.roll + 1;
     }
-    if(w) {
+    if(space) {
         plane.pitch = plane.pitch <= -30 ? -30 : plane.pitch - 0.2f;
-        plane.position.y += 0.1f;
+        plane.position.y = plane.position.y >= 30.0f ? 30.0f : plane.position.y + 0.1f;
     }
-    else if(s) {
+    else if(left_alt) {
         plane.pitch = plane.pitch >= 30 ? 30 : plane.pitch + 0.2f;
         plane.position.y -= 0.1f;
     }
     else
     {
         plane.pitch = plane.pitch >= 0 ? plane.pitch + 0.2f : 0;
-        plane.pitch = plane.pitch <= 0 ? plane.pitch - 0.2f : 0;
+        plane.pitch = plane.pitch < 0 ? plane.pitch - 0.2f : 0;
     }
     
-    // if(w) {
-    //     plane.speed.x = 0.5 * sin(plane.yaw*M_PI / 180.0f);
-    //     plane.speed.z = 0.5 * cos(plane.yaw*M_PI / 180.0f);
-    // }
+    if(w) {
+        plane.speed = plane.speed >= 3.0 ? 3.0 : plane.speed + 0.1;
+    }
+    else if(s) {
+        plane.speed -= plane.speed < 0 ? 0: plane.speed - 0.1;
+    }
     if(mouse_right) {
         bombs.push_back(Bomb(plane.position.x,plane.position.y,plane.position.z)); 
     }
@@ -285,14 +292,13 @@ void tick_input(GLFWwindow *window) {
 
 void tick_elements() {
     plane.tick();
-    plane.speed.x = 0.5 * sin(plane.yaw*M_PI / 180.0f);
-    plane.speed.z = 0.5 * cos(plane.yaw*M_PI / 180.0f);
+    plane.velocity.x = plane.speed * sin(plane.yaw*M_PI / 180.0f);
+    plane.velocity.z = plane.speed * cos(plane.yaw*M_PI / 180.0f);
 
     // speed1.set_position(plane.position.x+2,plane.position.y+2,plane.position.z+3);
     // speed2.set_position(plane.position.x,plane.position.y+2,plane.position.z+3);
     // alt.set_position(plane.position.x,plane.position.y-4, plane.position.z);
     // alt.yaw = plane.yaw;
-    int mag_speed = int(100 * sqrt(plane.speed.x*plane.speed.x + plane.speed.y*plane.speed.y + plane.speed.z*plane.speed.z));
     // speed1.set_score(mag_speed%10);
     // speed2.set_score((mag_speed/10)%10);
     alt.set_score(plane.position.y+10);
@@ -301,6 +307,8 @@ void tick_elements() {
     dist0_bar.set_score(int(glm::length(plane.position - rings.begin()->position))%10);
     dist1_bar.set_score(int(glm::length(plane.position - rings.begin()->position)/10)%10);
     dist2_bar.set_score(int(glm::length(plane.position - rings.begin()->position)/100)%10);
+    speed1.set_score(int(plane.speed * 10) % 10);
+    speed2.set_score(int(plane.speed) % 10);
     for(vector<Bomb>::iterator bomb=bombs.begin();bomb!=bombs.end();bomb++) {
         bomb->tick();
         if(bomb->position.y<-10){
@@ -380,6 +388,8 @@ void initGL(GLFWwindow *window, int width, int height) {
     dist0_bar = SSD(1,0);
     dist1_bar = SSD(0.5,0);
     dist2_bar = SSD(0,0);
+    speed1 = SSD(-1,0);
+    speed2 = SSD(-1.5,0);
     for(int i=0;i<50;i++) {
         volcanoes.push_back(Volcano(rand()%1000-500,rand()%500-250));
     }
