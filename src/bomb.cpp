@@ -35,5 +35,5 @@ void Bomb::draw(glm::mat4 VP) {
 }
 
 void Bomb::tick(){
-    this->position.y -= 0.05;
+    this->position.y -= 0.5f;
 }

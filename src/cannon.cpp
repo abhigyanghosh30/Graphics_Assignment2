@@ -7,35 +7,35 @@ Cannon::Cannon(float x, float z) {
     this->pitch = 1.7;
     static GLfloat vertex_buffer_data[3200];
     for(int i=0;i<100;i++){
-        vertex_buffer_data[18*i] = 0.25*(cos(2*M_PI*i/100));;
-		vertex_buffer_data[18*i+1] = 0.25*(sin(2*M_PI*i/100));;
+        vertex_buffer_data[18*i] = 2.5*(cos(2*M_PI*i/100));;
+		vertex_buffer_data[18*i+1] = 2.5*(sin(2*M_PI*i/100));;
 		vertex_buffer_data[18*i+2] = 0.0f;
-		vertex_buffer_data[18*i+3] = 0.25*(cos(2*M_PI*i/100));
-		vertex_buffer_data[18*i+4] = 0.25*(sin(2*M_PI*i/100));
+		vertex_buffer_data[18*i+3] = 2.5*(cos(2*M_PI*i/100));
+		vertex_buffer_data[18*i+4] = 2.5*(sin(2*M_PI*i/100));
 		vertex_buffer_data[18*i+5] = 10.0f;
-		vertex_buffer_data[18*i+6] = 0.25*(cos(2*M_PI*(i+1)/100));
-		vertex_buffer_data[18*i+7] = 0.25*(sin(2*M_PI*(i+1)/100));
+		vertex_buffer_data[18*i+6] = 2.5*(cos(2*M_PI*(i+1)/100));
+		vertex_buffer_data[18*i+7] = 2.5*(sin(2*M_PI*(i+1)/100));
 		vertex_buffer_data[18*i+8] = 10.0f;
 
-        vertex_buffer_data[18*i+9] = 0.25*(cos(2*M_PI*(i+1)/100));;
-		vertex_buffer_data[18*i+10] = 0.25*(sin(2*M_PI*(i+1)/100));;
+        vertex_buffer_data[18*i+9] = 2.5*(cos(2*M_PI*(i+1)/100));;
+		vertex_buffer_data[18*i+10] = 2.5*(sin(2*M_PI*(i+1)/100));;
 		vertex_buffer_data[18*i+11] = 10.0f;
-		vertex_buffer_data[18*i+12] = 0.25*(cos(2*M_PI*i/100));
-		vertex_buffer_data[18*i+13] = 0.25*(sin(2*M_PI*i/100));
+		vertex_buffer_data[18*i+12] = 2.5*(cos(2*M_PI*i/100));
+		vertex_buffer_data[18*i+13] = 2.5*(sin(2*M_PI*i/100));
 		vertex_buffer_data[18*i+14] = 0.0f;
-		vertex_buffer_data[18*i+15] = 0.25*(cos(2*M_PI*(i+1)/100));
-		vertex_buffer_data[18*i+16] = 0.25*(sin(2*M_PI*(i+1)/100));
+		vertex_buffer_data[18*i+15] = 2.5*(cos(2*M_PI*(i+1)/100));
+		vertex_buffer_data[18*i+16] = 2.5*(sin(2*M_PI*(i+1)/100));
 		vertex_buffer_data[18*i+17] = 0.0f;
     }
     for(int i=0;i<100;i++){
         vertex_buffer_data[1800+9*i] = 0.0f;
 		vertex_buffer_data[1800+9*i+1] = 0.0f;
 		vertex_buffer_data[1800+9*i+2] = 1.0f;
-		vertex_buffer_data[1800+9*i+3] = 0.25*(cos(2*M_PI*i/100));
-		vertex_buffer_data[1800+9*i+4] = 0.25*(sin(2*M_PI*i/100));
+		vertex_buffer_data[1800+9*i+3] = 2.5*(cos(2*M_PI*i/100));
+		vertex_buffer_data[1800+9*i+4] = 2.5*(sin(2*M_PI*i/100));
 		vertex_buffer_data[1800+9*i+5] = 0.5f;
-		vertex_buffer_data[1800+9*i+6] = 0.25*(cos(2*M_PI*(i+1)/100));
-		vertex_buffer_data[1800+9*i+7] = 0.25*(sin(2*M_PI*(i+1)/100));
+		vertex_buffer_data[1800+9*i+6] = 2.5*(cos(2*M_PI*(i+1)/100));
+		vertex_buffer_data[1800+9*i+7] = 2.5*(sin(2*M_PI*(i+1)/100));
 		vertex_buffer_data[1800+9*i+8] = 0.5f;
     }
     this->object = create3DObject(GL_TRIANGLES,300*3,vertex_buffer_data,COLOR_GREEN,GL_FILL);

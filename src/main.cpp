@@ -229,30 +229,27 @@ void tick_input(GLFWwindow *window) {
         horizontal = plane.yaw + 90;
         vertical = 0;
     }
-    if(up) {
-        horizontal+=1.0f;
-    }
-    if(down) {
-        horizontal-=1.0f;
-    }
-    if(left || a) {
+    // if(up) {
+    //     horizontal+=1.0f;
+    // }
+    // if(down) {
+    //     horizontal-=1.0f;
+    // }
+    if(q || a) {
         plane.roll = plane.roll <= -30 ? -30 : plane.roll - 1;
     }
-    if(right || d ) {
+    if(e || d ) {
         plane.roll = plane.roll >= 30 ? 30 : plane.roll + 1;
     }
-    if(space) {
+    if(up) {
         plane.pitch = plane.pitch <= -30 ? -30 : plane.pitch - 0.2f;
         plane.position.y = plane.position.y >= 30.0f ? 30.0f : plane.position.y + 0.1f;
     }
-    else if(left_alt) {
-        plane.pitch = plane.pitch >= 30 ? 30 : plane.pitch + 0.2f;
+    else if(down){
+        if(plane.pitch <= 0) {
+            plane.pitch += 0.2f;
+        }
         plane.position.y -= 0.1f;
-    }
-    else
-    {
-        plane.pitch = plane.pitch >= 0 ? plane.pitch + 0.2f : 0;
-        plane.pitch = plane.pitch < 0 ? plane.pitch - 0.2f : 0;
     }
     
     if(w) {
@@ -352,7 +349,7 @@ void tick_elements() {
         }
     }
 
-    glm::vec3 direction = rings.begin()->position - plane.position;
+    glm::vec3 direction = cannons.begin()->position - plane.position;
     // cout<<arrow.yaw<<endl;
     // cout<<plane.position.x<<","<<plane.position.y<<","<<plane.position.z<<endl;
     // cout<<rings.begin()->position.x<<","<<rings.begin()->position.y<<","<<rings.begin()->position.z<<endl;
@@ -368,7 +365,7 @@ void tick_elements() {
         arrow.position.y = plane.position.y - 0.5f;
         arrow.position.z = plane.position.z + 6.0f * sin( horizontal * M_PI / 180.0f);
     }
-    indicator.set_position(rings.begin()->position.x,rings.begin()->position.y + 3,rings.begin()->position.z);
+    indicator.set_position(cannons.begin()->position.x,cannons.begin()->position.y + 3,cannons.begin()->position.z);
 }
 
 /* Initialize the OpenGL rendering properties */
@@ -509,16 +506,18 @@ void check_collisions() {
         }
     }
     for(vector<Cannon>::iterator cannon = cannons.begin();cannon != cannons.end();cannon++){
-        for(vector<Bomb>::iterator bomb=bombs.begin();bomb!=bombs.begin();bomb++){
-            if(glm::length(cannon->position - bomb->position)<1){
+        for(vector<Bomb>::iterator bomb=bombs.begin();bomb!=bombs.end();bomb++){
+            if(glm::length(cannon->position - bomb->position)<3){
                 bombs.erase(bomb);
                 bomb--;
                 cannons.erase(cannon);
                 cannon--;
             }
         }
+    }
+    for(vector<Cannon>::iterator cannon = cannons.begin();cannon!=cannons.end();cannon++){
         for(vector<Bullet>::iterator bullet = bullets.begin();bullet!=bullets.end();bullet++){
-            if(glm::length(cannon->position - bullet->position)<1){
+            if(glm::length(cannon->position - bullet->position)<3){
                 bullets.erase(bullet);
                 bullet--;
                 cannons.erase(cannon);
