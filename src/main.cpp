@@ -235,11 +235,11 @@ void tick_input(GLFWwindow *window) {
     // if(down) {
     //     horizontal-=1.0f;
     // }
-    if(q || a) {
-        plane.roll = plane.roll <= -30 ? -30 : plane.roll - 1;
+    if(q) {
+        plane.roll--;
     }
-    if(e || d ) {
-        plane.roll = plane.roll >= 30 ? 30 : plane.roll + 1;
+    if(e) {
+        plane.roll++;
     }
     if(up) {
         plane.pitch = plane.pitch <= -30 ? -30 : plane.pitch - 0.2f;
